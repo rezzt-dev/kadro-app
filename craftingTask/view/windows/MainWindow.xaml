@@ -1,0 +1,90 @@
+﻿<Window x:Class="craftingTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:craftingTask"
+        mc:Ignorable="d"
+        Title="Crafting Tasks" Height="800" Width="1200" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+  <Border Background="{StaticResource MainBackground}" CornerRadius="12">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="22"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <Grid x:Name="titleBar" Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="20"/>
+          <ColumnDefinition Width="20"/>
+          <ColumnDefinition Width="20"/>
+          <ColumnDefinition Width="3"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="minimizeButton" Click="btnMinimizeWindow" Style="{StaticResource MinimizeWindowButton}" Grid.Column="1" Width="auto" Height="auto" Margin="3,5,3,3"/>
+        <Button x:Name="maximizeButton" Click="btnMaximizeWindow" Style="{StaticResource MaximizeWindowButton}" Grid.Column="2" Width="auto" Height="auto" Margin="3,5,3,3"/>
+        <Button x:Name="closeButton" Click="btnCloseWindow" Style="{StaticResource CloseWindowButton}" Grid.Column="3" Width="auto" Height="auto" Margin="3,5,3,3"/>
+      </Grid>
+
+      <Grid x:Name="contentArea" Grid.Row="1" Margin="5">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="0.35*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Border Name="boardsBorder" Grid.Column="0" Margin="10,10,5,10" Background="{StaticResource SecondaryBackground}" CornerRadius="10">
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="0" ItemsSource="{Binding BoardList}" Background="Transparent" BorderBrush="Transparent" Margin="5">
+              <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                  <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                  <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_MouseDoubleClick"/>
+                  <!-- Para un solo clic 'MouseDoubleClick' -->
+                </Style>
+              </ListView.ItemContainerStyle>
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <Button Style="{StaticResource InvisibleButton}" HorizontalAlignment="Stretch">
+                    <Grid Margin="0,2.5,0,2.5">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8"/>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                      <Border Grid.Column="0" Grid.ColumnSpan="2" Width="auto" Background="#181818" CornerRadius="8" Padding="15">
+                        <StackPanel Margin="30,0,0,0">
+                          <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold" Foreground="White"/>
+                          <TextBlock Text="{Binding CreationDate}" FontSize="9" Foreground="White" Margin="0,8,0,0"/>
+                        </StackPanel>
+                      </Border>
+                      <Border Grid.Column="0" Width="8" HorizontalAlignment="Left" Background="{Binding Color}" />
+                    </Grid>
+                  </Button>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
+
+            <Grid Grid.Row="1">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.6*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+
+              <Button x:Name="btnArchiveTasks" Grid.Column="1" Margin="0,0,5,5" Style="{StaticResource FunctionButtonStyle}" Content="Crear Tablero"
+                      VerticalAlignment="Center" Padding="0,4"/>
+            </Grid>
+          </Grid>
+        </Border>
+        <TextBlock Name="welcomeMessage" Grid.Column="1" Text="Welcome to Crafting Tasks" FontFamily="Poppins" FontSize="28"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource BackgroundForeground}"/>
+        <Frame Name="boardsFrame" Grid.Column="1" Margin="5,10,10,10" NavigationUIVisibility="Hidden">
+          
+        </Frame>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

@@ -1,0 +1,151 @@
+﻿<Page x:Class="craftingTask.view.frame_pages.BoardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:craftingTask.view.frame_pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="BoardPage">
+  <Border Background="{StaticResource SecondaryBackground}" CornerRadius="10">
+    <Grid Margin="5">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="30"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="30"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="0,0,10,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="1.5*"/>
+          </Grid.ColumnDefinitions>
+
+          <Button x:Name="btnCreateTask" Grid.Column="0" Margin="0,0,2.5,0" Style="{StaticResource FunctionButtonStyle}" Content="Crear Tarea"
+                  VerticalAlignment="Center" Padding="0,4"/>
+          <Button x:Name="btnArchiveTasks" Grid.Column="1" Margin="2.5,0,0,0" Style="{StaticResource FunctionButtonStyle}" Content="Archivar Tareas"
+                  VerticalAlignment="Center" Padding="0,4"/>
+        </Grid>
+        
+        <Button Grid.Column="1" x:Name="btnCloseFrame" Click="btnCloseBoardFrame" Style="{StaticResource CloseFrameButton}" 
+                Width="15" Height="15" Margin="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      </Grid>
+        
+      <Grid Grid.Row="2">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="4*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="btnCreatePanel" Grid.Column="0" Margin="0,0,2.5,0" Style="{StaticResource FunctionButtonStyle}" Content="Crear Panel"
+                VerticalAlignment="Center" Padding="50,4"/>
+        <Button x:Name="btnDeletePanels" Grid.Column="1" Margin="2.5,0,0,0" Style="{StaticResource FunctionButtonStyle}" Content="Borrar Paneles"
+                VerticalAlignment="Center" Padding="50,4"/>
+        
+        <Button x:Name="btnShowArchiveTasks" Grid.Column="3" Style="{StaticResource FunctionButtonStyle}" Content="Ver Archivo"
+                HorizontalAlignment="Right" VerticalAlignment="Center" Padding="50,4" VerticalContentAlignment="Center"/>
+      </Grid>
+
+      <Grid Grid.Row="1">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+          <ItemsControl ItemsSource="{Binding PanelList}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"/>
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Border Width="350" Padding="10" Margin="10" CornerRadius="12" Background="{StaticResource PanelBackground}"
+                        BorderBrush="{Binding Color}" BorderThickness="2" SnapsToDevicePixels="True">
+                  <Grid>
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="40"/>
+                      <RowDefinition Height="*"/>
+                      <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="{Binding Name}" Foreground="{Binding Color}" FontSize="16" FontWeight="Bold"
+                               Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                    <ListBox Grid.Row="1" ItemsSource="{Binding TaskList}" Background="{StaticResource PanelBackground}" BorderThickness="0"
+                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
+                             ScrollViewer.CanContentScroll="False" Margin="5">
+                      <ListBox.Resources>
+                        <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBarStyle}" />
+                      </ListBox.Resources>
+
+                      <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                          <VirtualizingStackPanel Orientation="Vertical" />
+                        </ItemsPanelTemplate>
+                      </ListBox.ItemsPanel>
+
+                      <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                          <Setter Property="Margin" Value="0" />
+                          <Setter Property="Padding" Value="0" />
+                          <Setter Property="Background" Value="Transparent" />
+                          <Setter Property="BorderThickness" Value="0" />
+
+                          <Setter Property="Template">
+                            <Setter.Value>
+                              <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter />
+                              </ControlTemplate>
+                            </Setter.Value>
+                          </Setter>
+                        </Style>
+                      </ListBox.ItemContainerStyle>
+
+                      <ListBox.ItemTemplate>
+                        <DataTemplate>
+                          <Border Background="{StaticResource TaskBackground}" BorderBrush="{Binding Color}" BorderThickness="1" CornerRadius="10" Padding="16" Margin="6,6,6,14">
+                            <Grid>
+                              <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                              </Grid.RowDefinitions>
+
+                              <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                                <TextBlock Text="{Binding Title}" Foreground="{StaticResource TaskTitleForeground}" FontWeight="SemiBold" FontSize="17" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding EndDate}" Foreground="{StaticResource TaskEndDateForeground}" FontSize="12" Margin="0,2,0,0" />
+                              </StackPanel>
+
+                              <Border Grid.Row="1" Height="1" Background="{StaticResource TaskBorder}" Opacity="0.25" Margin="0,0,0,10" />
+
+                              <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+                                <Border CornerRadius="6" BorderBrush="{StaticResource TaskPriorityBorder}" Background="#10FFFFFF" Padding="6,2" Margin="6,0,8,0">
+                                  <TextBlock Text="{Binding Priority}" Foreground="{StaticResource TaskPriorityForeground}" FontSize="12" FontWeight="Medium" />
+                                </Border>
+                                <Border CornerRadius="6" BorderBrush="{StaticResource TaskTagBorder}" Background="{StaticResource TaskTagBackground}" Padding="6,2">
+                                  <TextBlock Text="{Binding Tag}" Foreground="{StaticResource TaskTagForeground}" FontSize="11" />
+                                </Border>
+                              </StackPanel>
+
+                            </Grid>
+                          </Border>
+                        </DataTemplate>
+                      </ListBox.ItemTemplate>
+                    </ListBox>
+                  </Grid>
+                </Border>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </ScrollViewer>
+      </Grid>
+    </Grid>
+  </Border>
+</Page>
