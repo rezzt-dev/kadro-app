@@ -39,6 +39,7 @@ namespace craftingTask.model.objects
       this.Name = inputName;
       this.Color = inputColor;
       this.CreationDate = DateTime.UtcNow;
+      this.ModificationDate = DateTime.UtcNow;
     }
 
     public Board (string inputName, string inputColor, DateTime inputModificationDate)
@@ -64,6 +65,22 @@ namespace craftingTask.model.objects
       this.Color = inputColor;
       this.ModificationDate = inputModificationDate;
       this.CreationDate = inputCreationDate;
+    }
+
+    public void Add()
+    {
+      boardManager = new BoardManager();
+      boardManager.AddBoard(this);
+    }
+    public void Update()
+    {
+      boardManager = new BoardManager();
+      boardManager.UpdateBoard(this);
+    }
+    public void Delete()
+    {
+      boardManager = new BoardManager();
+      boardManager.DeleteBoard(this);
     }
   }
 }

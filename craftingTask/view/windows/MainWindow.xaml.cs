@@ -1,5 +1,9 @@
 ﻿using craftingTask.model.objects;
 using craftingTask.persistence.managers;
+using craftingTask.view.frame_pages;
+using craftingTask.view.windows.windows_dialogs;
+using SQLitePCL;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,8 +14,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SQLitePCL;
-using craftingTask.view.frame_pages;
 
 namespace craftingTask
 {
@@ -20,7 +22,7 @@ namespace craftingTask
   /// </summary>
   public partial class MainWindow : Window
   {
-    public List<Board> BoardList { get; set; }
+    public ObservableCollection<Board> BoardList { get; set; }
     private BoardManager mainBoardManager;
 
     public MainWindow()
@@ -28,8 +30,7 @@ namespace craftingTask
       InitializeComponent();
 
       mainBoardManager = new BoardManager();
-      BoardList = mainBoardManager.GetAllBoards();
-
+      BoardList = new ObservableCollection<Board>(mainBoardManager.GetAllBoards());
       DataContext = this;
     }
 
@@ -63,6 +64,21 @@ namespace craftingTask
         BoardPage boardPage = new BoardPage(mainSelectedBoard);
         this.boardsFrame.Navigate(boardPage);
       }
+    }
+
+    private void btnCreateBoard_Click(object sender, RoutedEventArgs e)
+    {
+      CreateBoardDialog createBoardDialog = new CreateBoardDialog();
+      if (createBoardDialog.ShowDialog() == true)
+      {
+        BoardList.Add(createBoardDialog.CreatedBoard);
+      }
+    }
+
+    private void btnDeleteBoards_Click(object sender, RoutedEventArgs e)
+    {
+      DeleteBoardsDialog deleteBoardsDialog = new DeleteBoardsDialog(BoardList);
+      deleteBoardsDialog.ShowDialog();
     }
   }
 }

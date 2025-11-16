@@ -18,69 +18,131 @@ namespace craftingTask.persistence.managers
       panelList = new List<Panel>();
     }
 
-    public long GetPanelLastId ()
+    public long GetPanelLastId()
     {
-      broker = new DBBroker();
-      var panelCount = broker.ExecuteScalar("SELECT COUNT(*) FROM Panel");
-      long lastPanelId = Convert.ToInt64(panelCount) + 1;
-      return lastPanelId;
+      try
+      {
+        using (var broker = new DBBroker())
+        {
+          var panelCount = broker.ExecuteScalar("SELECT COUNT(*) FROM Panel");
+          return Convert.ToInt64(panelCount) + 1;
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al obtener el último PanelId: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return 1;
+      }
     }
 
-    public int GetPanelLastOrder ()
+    public int GetPanelLastOrder()
     {
-      broker = new DBBroker();
-      var panelOrder = broker.ExecuteScalar("SELECT MAX([Order]) FROM Panel");
-      int lastOrder = panelOrder != DBNull.Value ? Convert.ToInt32(panelOrder) : 0;
-      return lastOrder + 1;
+      try
+      {
+        using (var broker = new DBBroker())
+        {
+          var panelOrder = broker.ExecuteScalar("SELECT MAX([Order]) FROM Panel");
+          int lastOrder = panelOrder != DBNull.Value ? Convert.ToInt32(panelOrder) : 0;
+          return lastOrder + 1;
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al obtener el último orden de panel: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return 1;
+      }
     }
 
     public void AddPanel (Panel inputPanel)
     {
-      broker = new DBBroker();
-      var insertParams = new Dictionary<string, object>
+      try
       {
-        {"@PanelId", inputPanel.PanelId },
-        {"@BoardId", inputPanel.BoardId},
-        {"@Name", inputPanel.Name},
-        {"@Order", inputPanel.Order },
-        {"@Color", inputPanel.Color },
-        {"@CreationDate", inputPanel.CreationDate }
-      };
-      broker.ExecuteNonQuery("INSERT INTO Panel (PanelId, BoardId, Name, [Order], Color, CreationDate) VALUES (@PanelId, @BoardId, @Name, @Order, @Color, @CreationDate)",
-        insertParams);
+        using (var broker = new DBBroker())
+        {
+          var insertParams = new Dictionary<string, object>
+            {
+                {"@PanelId", inputPanel.PanelId },
+                {"@BoardId", inputPanel.BoardId},
+                {"@Name", inputPanel.Name},
+                {"@Order", inputPanel.Order },
+                {"@Color", inputPanel.Color },
+                {"@CreationDate", inputPanel.CreationDate }
+            };
+
+          broker.ExecuteNonQuery(
+              "INSERT INTO Panel (PanelId, BoardId, Name, [Order], Color, CreationDate) " +
+              "VALUES (@PanelId, @BoardId, @Name, @Order, @Color, @CreationDate)",
+              insertParams
+          );
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al crear panel: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
     }
 
-    public void UpdatePanel (Panel inputPanel)
+    public void UpdatePanel(Panel inputPanel)
     {
-      broker = new DBBroker();
-      var insertParams = new Dictionary<string, object>
+      try
       {
-        {"@PanelId", inputPanel.PanelId },
-        {"@Name", inputPanel.Name},
-        {"@Order", inputPanel.Order },
-      };
-      broker.ExecuteNonQuery("UPDATE Panel SET Name = @Name, [Order] = @Order WHERE PanelId = @PanelId", insertParams);
+        using (var broker = new DBBroker())
+        {
+          var parameters = new Dictionary<string, object>
+            {
+                {"@PanelId", inputPanel.PanelId },
+                {"@Name", inputPanel.Name},
+                {"@Order", inputPanel.Order },
+            };
+
+          broker.ExecuteNonQuery("UPDATE Panel SET Name = @Name, [Order] = @Order WHERE PanelId = @PanelId", parameters);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al actualizar panel: " + ex.Message);
+      }
     }
 
-    public void RemovePanel (Panel inputPanel)
+    public void RemovePanel(Panel inputPanel)
     {
-      broker = new DBBroker();
-      var insertParams = new Dictionary<string, object>
+      try
       {
-        {"@PanelId", inputPanel.PanelId }
-      };
-      broker.ExecuteNonQuery("DELETE FROM Panel WHERE PanelId = @PanelId", insertParams);
+        using (var broker = new DBBroker())
+        {
+          var parameters = new Dictionary<string, object>
+            {
+                {"@PanelId", inputPanel.PanelId }
+            };
+
+          broker.ExecuteNonQuery("DELETE FROM Panel WHERE PanelId = @PanelId", parameters);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al eliminar panel: " + ex.Message);
+      }
     }
 
-    public List<Panel> GetAllPanelsFromBoard (long inputBoardId)
+    public List<Panel> GetAllPanelsFromBoard(long inputBoardId)
     {
-      broker = new DBBroker();
-      var parameters = new Dictionary<string, object>
+      try
       {
-        { "@BoardId", inputBoardId }
-      };
-      var returnedPanelList = broker.ExecuteQuery<Panel>("SELECT * FROM Panel WHERE BoardId = @BoardId", parameters);
-      return returnedPanelList;
+        using (var broker = new DBBroker())
+        {
+          var parameters = new Dictionary<string, object>
+            {
+                { "@BoardId", inputBoardId }
+            };
+
+          return broker.ExecuteQuery<Panel>("SELECT * FROM Panel WHERE BoardId = @BoardId", parameters);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al obtener paneles: " + ex.Message);
+        return new List<Panel>();
+      }
     }
   }
 }

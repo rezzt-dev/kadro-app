@@ -57,94 +57,150 @@
       </Grid>
 
       <Grid Grid.Row="1">
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-          <ItemsControl ItemsSource="{Binding PanelList}">
-            <ItemsControl.ItemsPanel>
-              <ItemsPanelTemplate>
-                <StackPanel Orientation="Horizontal"/>
-              </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+        <ListBox ItemsSource="{Binding PanelList}" BorderThickness="0" Margin="0"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                 HorizontalContentAlignment="Stretch" SelectionMode="Single" Background="Transparent"
+                 ScrollViewer.CanContentScroll="False">
 
-            <ItemsControl.ItemTemplate>
-              <DataTemplate>
-                <Border Width="350" Padding="10" Margin="10" CornerRadius="12" Background="{StaticResource PanelBackground}"
-                        BorderBrush="{Binding Color}" BorderThickness="2" SnapsToDevicePixels="True">
-                  <Grid>
-                    <Grid.RowDefinitions>
-                      <RowDefinition Height="40"/>
-                      <RowDefinition Height="*"/>
-                      <RowDefinition Height="5"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="{Binding Name}" Foreground="{Binding Color}" FontSize="16" FontWeight="Bold"
-                               Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                    <ListBox Grid.Row="1" ItemsSource="{Binding TaskList}" Background="{StaticResource PanelBackground}" BorderThickness="0"
-                             ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto"
-                             ScrollViewer.CanContentScroll="False" Margin="5">
-                      <ListBox.Resources>
-                        <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBarStyle}" />
-                      </ListBox.Resources>
+          <ListBox.Resources>
+            <Style TargetType="ScrollBar"
+                   BasedOn="{StaticResource DarkHorizontalScrollBarStyle}" />
+          </ListBox.Resources>
 
-                      <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                          <VirtualizingStackPanel Orientation="Vertical" />
-                        </ItemsPanelTemplate>
-                      </ListBox.ItemsPanel>
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <VirtualizingStackPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
 
-                      <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem">
-                          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                          <Setter Property="Margin" Value="0" />
-                          <Setter Property="Padding" Value="0" />
-                          <Setter Property="Background" Value="Transparent" />
-                          <Setter Property="BorderThickness" Value="0" />
+          <ListBox.ItemContainerStyle>
+            <Style TargetType="ListBoxItem">
+              <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+              <Setter Property="Padding" Value="0" />
+              <Setter Property="Margin" Value="0" />
+              <Setter Property="Focusable" Value="False" />
+              <Setter Property="Template">
+                <Setter.Value>
+                  <ControlTemplate TargetType="ListBoxItem">
+                    <ContentPresenter />
+                  </ControlTemplate>
+                </Setter.Value>
+              </Setter>
+            </Style>
+          </ListBox.ItemContainerStyle>
 
-                          <Setter Property="Template">
-                            <Setter.Value>
-                              <ControlTemplate TargetType="ListBoxItem">
-                                <ContentPresenter />
-                              </ControlTemplate>
-                            </Setter.Value>
-                          </Setter>
-                        </Style>
-                      </ListBox.ItemContainerStyle>
+          <ListBox.ItemTemplate>
+            <DataTemplate>
 
-                      <ListBox.ItemTemplate>
-                        <DataTemplate>
-                          <Border Background="{StaticResource TaskBackground}" BorderBrush="{Binding Color}" BorderThickness="1" CornerRadius="10" Padding="16" Margin="6,6,6,14">
-                            <Grid>
-                              <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                              </Grid.RowDefinitions>
+              <Border Width="350" Padding="10" Margin="10" CornerRadius="12"
+              Background="{StaticResource PanelBackground}"
+              BorderBrush="{Binding Color}" BorderThickness="2">
 
-                              <StackPanel Grid.Row="0" Margin="0,0,0,10">
-                                <TextBlock Text="{Binding Title}" Foreground="{StaticResource TaskTitleForeground}" FontWeight="SemiBold" FontSize="17" TextWrapping="Wrap" />
-                                <TextBlock Text="{Binding EndDate}" Foreground="{StaticResource TaskEndDateForeground}" FontSize="12" Margin="0,2,0,0" />
-                              </StackPanel>
+                <Grid>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="5" />
+                  </Grid.RowDefinitions>
 
-                              <Border Grid.Row="1" Height="1" Background="{StaticResource TaskBorder}" Opacity="0.25" Margin="0,0,0,10" />
+                  <TextBlock Grid.Row="0" Text="{Binding Name}" Foreground="{Binding Color}"
+                     FontSize="16" FontWeight="Bold" Margin="0,0,0,10"
+                     HorizontalAlignment="Center" />
 
-                              <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
-                                <Border CornerRadius="6" BorderBrush="{StaticResource TaskPriorityBorder}" Background="#10FFFFFF" Padding="6,2" Margin="6,0,8,0">
-                                  <TextBlock Text="{Binding Priority}" Foreground="{StaticResource TaskPriorityForeground}" FontSize="12" FontWeight="Medium" />
-                                </Border>
-                                <Border CornerRadius="6" BorderBrush="{StaticResource TaskTagBorder}" Background="{StaticResource TaskTagBackground}" Padding="6,2">
-                                  <TextBlock Text="{Binding Tag}" Foreground="{StaticResource TaskTagForeground}" FontSize="11" />
-                                </Border>
-                              </StackPanel>
+                  <ListBox Grid.Row="1" ItemsSource="{Binding TaskList}" Margin="5"
+                   Background="{StaticResource PanelBackground}" BorderThickness="0"
+                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                   ScrollViewer.VerticalScrollBarVisibility="Auto"
+                   ScrollViewer.CanContentScroll="False">
 
-                            </Grid>
-                          </Border>
-                        </DataTemplate>
-                      </ListBox.ItemTemplate>
-                    </ListBox>
-                  </Grid>
-                </Border>
-              </DataTemplate>
-            </ItemsControl.ItemTemplate>
-          </ItemsControl>
-        </ScrollViewer>
+                    <ListBox.Resources>
+                      <Style TargetType="ScrollBar"
+                     BasedOn="{StaticResource DarkScrollBarStyle}" />
+                    </ListBox.Resources>
+
+                    <ListBox.ItemsPanel>
+                      <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical" />
+                      </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemContainerStyle>
+                      <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Template">
+                          <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                              <ContentPresenter />
+                            </ControlTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </ListBox.ItemContainerStyle>
+
+                    <ListBox.ItemTemplate>
+                      <DataTemplate>
+
+                        <Border Background="{StaticResource TaskBackground}"
+                        BorderBrush="{Binding Color}" BorderThickness="1"
+                        CornerRadius="10" Padding="16" Margin="6,6,6,14">
+
+                          <Grid>
+                            <Grid.RowDefinitions>
+                              <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                              <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                              <TextBlock Text="{Binding Title}"
+                                 Foreground="{StaticResource TaskTitleForeground}"
+                                 FontWeight="SemiBold" FontSize="17"
+                                 TextWrapping="Wrap" />
+
+                              <TextBlock Text="{Binding EndDate}"
+                                 Foreground="{StaticResource TaskEndDateForeground}"
+                                 FontSize="12" Margin="0,2,0,0" />
+                            </StackPanel>
+
+                            <Border Grid.Row="1" Height="1" Background="{StaticResource TaskBorder}"
+                            Opacity="0.25" Margin="0,0,0,10" />
+
+                            <StackPanel Grid.Row="2" Orientation="Horizontal"
+                                HorizontalAlignment="Right" Margin="6">
+
+                              <Border CornerRadius="6" Padding="6,2" Margin="6,0,8,0"
+                              BorderBrush="{StaticResource TaskPriorityBorder}"
+                              Background="#10FFFFFF">
+                                <TextBlock Text="{Binding Priority}"
+                                   Foreground="{StaticResource TaskPriorityForeground}"
+                                   FontSize="12" FontWeight="Medium" />
+                              </Border>
+
+                              <Border CornerRadius="6" Padding="6,2"
+                              BorderBrush="{StaticResource TaskTagBorder}"
+                              Background="{StaticResource TaskTagBackground}">
+                                <TextBlock Text="{Binding Tag}"
+                                   Foreground="{StaticResource TaskTagForeground}"
+                                   FontSize="11" />
+                              </Border>
+
+                            </StackPanel>
+                          </Grid>
+
+                        </Border>
+                      </DataTemplate>
+                    </ListBox.ItemTemplate>
+                  </ListBox>
+                </Grid>
+
+              </Border>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
       </Grid>
     </Grid>
   </Border>

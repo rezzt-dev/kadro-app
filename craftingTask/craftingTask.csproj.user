@@ -2,7 +2,22 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="resources\drawable\ModernColorPicker.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="view\frame_pages\BoardPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\board_dialogs\CreateBoardDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\board_dialogs\DeleteBoardsDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\panel_dialogs\CreatePanelDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\panel_dialogs\DeletePanelsDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

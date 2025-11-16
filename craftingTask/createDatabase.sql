@@ -53,4 +53,4 @@ CREATE INDEX IF NOT EXISTS idx_task_panel ON Task(PanelId);
 CREATE INDEX IF NOT EXISTS idx_task_status ON Task(StatusId);
 
 -- VALORES POR DEFECTO ----------------------------
-INSERT INTO Status (Name) VALUES ('Pendientes'), ('En Progreso'), ('Realizadas');
+INSERT INTO Status (Name) VALUES ('Pendientes'), ('En Progreso'), ('Realizadas'), ('Archivadas');

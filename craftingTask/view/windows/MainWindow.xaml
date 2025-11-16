@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:craftingTask"
         mc:Ignorable="d"
-        Title="Crafting Tasks" Height="800" Width="1200" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+        Title="Crafting Tasks" Height="1000" Width="1700" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
   <Border Background="{StaticResource MainBackground}" CornerRadius="12">
     <Grid>
       <Grid.RowDefinitions>
@@ -72,10 +72,13 @@
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.6*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
 
-              <Button x:Name="btnArchiveTasks" Grid.Column="1" Margin="0,0,5,5" Style="{StaticResource FunctionButtonStyle}" Content="Crear Tablero"
-                      VerticalAlignment="Center" Padding="0,4"/>
+              <Button x:Name="btnCreateBoard" Grid.Column="1" Margin="0,0,5,5" Style="{StaticResource FunctionButtonStyle}" Content="Crear Tablero"
+                      VerticalAlignment="Center" Padding="0,4" Click="btnCreateBoard_Click"/>
+              <Button x:Name="btnDeleteBoards" Grid.Column="2" Margin="0,0,5,5" Style="{StaticResource FunctionButtonStyle}" Content="Borrar Tableros"
+                      VerticalAlignment="Center" Padding="0,4" Click="btnDeleteBoards_Click"/>
             </Grid>
           </Grid>
         </Border>
