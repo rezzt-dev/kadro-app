@@ -6,19 +6,28 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>resources\images\icon\icono-kadro.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\images\icon\icono-kadro.ico" />
     <None Remove="resources\images\plus-add.ico" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="resources\images\icon\icono-kadro.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LightImage.DragDrop" Version="0.5.5" />
+    <PackageReference Include="LightImage.DragDrop.Wpf" Version="0.5.5" />
     <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.10" />
     <PackageReference Include="SQLite" Version="3.13.0" />
     <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="resources\images\icon\icono-kadro.ico" />
     <Resource Include="resources\images\plus-add.ico" />
   </ItemGroup>
 
@@ -35,10 +44,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="view\windows\windows_dialogs\task_dialogs\" />
   </ItemGroup>
 
 </Project>

@@ -101,7 +101,7 @@ namespace craftingTask.persistence.managers
       }
     }
 
-    public void UpdateTaskState(model.objects.Task inputTask, long inputStatusId, string inputColor)
+    public void UpdateTaskState(model.objects.Task inputTask, long inputStatusId, long inputPanelId, string inputColor)
     {
       try
       {
@@ -110,12 +110,13 @@ namespace craftingTask.persistence.managers
           var parameters = new Dictionary<string, object>
             {
                 {"@TaskId", inputTask.TaskId },
+                {"@PanelId", inputPanelId },
                 {"@StatusId", inputStatusId },
                 {"@Color", inputColor }
             };
 
           broker.ExecuteNonQuery(
-              "UPDATE Task SET StatusId = @StatusId, Color = @Color WHERE TaskId = @TaskId",
+              "UPDATE Task SET StatusId = @StatusId, Color = @Color, PanelId = @PanelId WHERE TaskId = @TaskId",
               parameters
           );
         }

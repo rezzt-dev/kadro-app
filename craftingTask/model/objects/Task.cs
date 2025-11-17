@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace craftingTask.model.objects
 {
@@ -32,21 +33,24 @@ namespace craftingTask.model.objects
       this.TaskId = LastTaskId;
     }
 
-    public Task (long inputPanelId, string inputTitle, string inputDescription, string inputTag, int inputPriority, long inputStatusId, string inputColor)
+    public Task(long inputPanelId, string inputTitle, string inputDescription, string inputTag,
+      int inputPriority, long inputStatusId, string inputColor, DateTime? inputEndDate)
     {
       taskManager = new TaskManager();
       taskList = new List<Task>();
 
       this.LastTaskId = taskManager.GetTaskLastId();
       this.TaskId = LastTaskId;
+
+      this.PanelId = inputPanelId;
       this.Title = inputTitle;
       this.Description = inputDescription;
       this.Tag = inputTag;
       this.Priority = inputPriority;
       this.CreationDate = DateTime.UtcNow;
-      this.Priority = inputPriority;
       this.StatusId = inputStatusId;
       this.Color = inputColor;
+      this.EndDate = inputEndDate ?? this.CreationDate.AddDays(7);
     }
 
     public Task (long inputPanelId, string inputTitle, string inputDescription, string inputTag, 
@@ -123,22 +127,52 @@ namespace craftingTask.model.objects
     public void UpdateStateToDo()
     {
       taskManager = new TaskManager();
-      taskManager.UpdateTaskState(this, 1, "#FF6B6B");
+      taskManager.UpdateTaskState(this, 1, this.PanelId, "#FF6B6B");
     }
     public void UpdateStateDoing()
     {
       taskManager = new TaskManager();
-      taskManager.UpdateTaskState(this, 2, "#FFD93D");
+      taskManager.UpdateTaskState(this, 2, this.PanelId, "#FFD93D");
     }
     public void UpdateStateDone()
     {
       taskManager = new TaskManager();
-      taskManager.UpdateTaskState(this, 3, "#6BCB77");
+      taskManager.UpdateTaskState(this, 3, this.PanelId, "#6BCB77");
     }
     public void UpdateStateArchived()
     {
       taskManager = new TaskManager();
-      taskManager.UpdateTaskState(this, 4, "#4D96FF");
+      taskManager.UpdateTaskState(this, 4, this.PanelId, "#4D96FF");
+    }
+    public void UpdateStateCustom(string inputPanelColor,long inputPanelId, long inputStatusId)
+    {
+      taskManager = new TaskManager();
+      taskManager.UpdateTaskState(this, inputStatusId, inputPanelId, inputPanelColor);
+    }
+
+    public void MoveToPanel (Panel inputTargetPanel)
+    {
+      this.PanelId = inputTargetPanel.PanelId;
+      this.Color = inputTargetPanel.Color;
+
+      switch (inputTargetPanel.Color.ToUpper())
+      {
+        case "#FF6B6B":
+          UpdateStateToDo();
+          break;
+        case "#FFD93D":
+          UpdateStateDoing();
+          break;
+        case "#6BCB77":
+          UpdateStateDone();
+          break;
+        case "#4D96FF":
+          UpdateStateArchived();
+          break;
+        default:
+          UpdateStateCustom(inputTargetPanel.Color, inputTargetPanel.PanelId, 5);
+          break;
+      }
     }
   }
 }

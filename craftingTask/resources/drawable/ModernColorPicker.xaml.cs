@@ -68,9 +68,9 @@ namespace craftingTask.resources.drawable
       InitializeComponent();
       DataContext = this;
 
-      ColorPalette.MouseDown += Palette_MouseDown;
-      ColorPalette.MouseMove += Palette_MouseMove;
-      ColorPalette.MouseUp += Palette_MouseUp;
+      ColorPaletteGrid.MouseDown += Palette_MouseDown;
+      ColorPaletteGrid.MouseMove += Palette_MouseMove;
+      ColorPaletteGrid.MouseUp += Palette_MouseUp;
     }
 
     private void OnPropertyChanged(string name) =>
@@ -92,32 +92,51 @@ namespace craftingTask.resources.drawable
     private void Palette_MouseDown(object sender, MouseButtonEventArgs e)
     {
       _isDragging = true;
-      UpdateColorFromMouse(e.GetPosition(ColorPalette));
-      ColorPalette.CaptureMouse();
+      UpdateColorFromMouse(e.GetPosition(ColorPaletteGrid));
+      ColorPaletteGrid.CaptureMouse();
     }
 
     private void Palette_MouseMove(object sender, MouseEventArgs e)
     {
       if (_isDragging && e.LeftButton == MouseButtonState.Pressed)
       {
-        UpdateColorFromMouse(e.GetPosition(ColorPalette));
+        UpdateColorFromMouse(e.GetPosition(ColorPaletteGrid));
       }
     }
 
     private void Palette_MouseUp(object sender, MouseButtonEventArgs e)
     {
       _isDragging = false;
-      ColorPalette.ReleaseMouseCapture();
+      ColorPaletteGrid.ReleaseMouseCapture();
     }
 
     private void UpdateColorFromMouse(Point position)
     {
       if (position.X < 0) position.X = 0;
-      if (position.X > ColorPalette.ActualWidth) position.X = ColorPalette.ActualWidth;
+      if (position.X > ColorPaletteGrid.ActualWidth) position.X = ColorPaletteGrid.ActualWidth;
+      if (position.Y < 0) position.Y = 0;
+      if (position.Y > ColorPaletteGrid.ActualHeight) position.Y = ColorPaletteGrid.ActualHeight;
 
-      double ratio = position.X / ColorPalette.ActualWidth;
-      Color color = GetColorFromHue(ratio);
+      double hueRatio = position.X / ColorPaletteGrid.ActualWidth;
+      double lumRatio = 1 - (position.Y / ColorPaletteGrid.ActualHeight);
+
+      Color color = GetColorFromHue(hueRatio);
+      color = MixWithWhiteBlack(color, lumRatio);
       SelectedBrush = new SolidColorBrush(color);
+    }
+
+    private Color MixWithWhiteBlack(Color color, double lumRatio)
+    {
+      if (lumRatio >= 0.5)
+      {
+        double t = (lumRatio - 0.5) * 2; // 0..1
+        return InterpolateColor(color, Colors.White, t);
+      }
+      else
+      {
+        double t = lumRatio * 2; // 0..1
+        return InterpolateColor(Colors.Black, color, t);
+      }
     }
 
     private Color GetColorFromHue(double ratio)

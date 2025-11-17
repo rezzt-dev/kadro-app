@@ -72,7 +72,8 @@ namespace craftingTask.model.objects
 
       TaskManager taskManager = new TaskManager();
       List<Task> auxTaskList = taskManager.GetAllTasksFromPanel(this.PanelId);
-      this.TaskList = new ObservableCollection<Task>(auxTaskList);
+      var orderedTaskList = auxTaskList.OrderBy(t => t.EndDate).ThenByDescending(t => t.Priority).ToList();
+      this.TaskList = new ObservableCollection<Task>(orderedTaskList);
     }
 
     public void Add ()

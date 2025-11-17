@@ -20,5 +20,14 @@
     <Compile Update="view\windows\windows_dialogs\panel_dialogs\DeletePanelsDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="view\windows\windows_dialogs\task_dialogs\ArchiveTaskDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\task_dialogs\CreateTaskDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="view\windows\windows_dialogs\task_dialogs\ShowTaskArchive.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

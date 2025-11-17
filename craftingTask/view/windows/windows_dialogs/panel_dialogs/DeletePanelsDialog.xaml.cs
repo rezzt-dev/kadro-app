@@ -34,9 +34,13 @@ namespace craftingTask.view.windows.windows_dialogs.panel_dialogs
       DataContext = this;
     }
 
-    private void btnMinimizeWindow_Click(object sender, RoutedEventArgs e)
+    private void btnMinimizeWindowClick(object sender, RoutedEventArgs e)
     {
       this.WindowState = WindowState.Minimized;
+    }
+    private void btnCloseWindowClick(object sender, RoutedEventArgs e)
+    {
+      this.Close();
     }
     private void btnCancelDelete_Click(object sender, RoutedEventArgs e)
     {

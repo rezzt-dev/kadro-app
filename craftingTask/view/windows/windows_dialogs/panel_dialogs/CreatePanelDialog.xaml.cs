@@ -26,6 +26,7 @@ namespace craftingTask.view.windows.windows_dialogs.panel_dialogs
     private Brush _selectedColorBrush;
     private string _selectedColorHex;
     public event PropertyChangedEventHandler PropertyChanged;
+    public event Action<Panel> PanelCreated;
 
     public Board SelectedBoard { get; private set; }
     public Panel CreatedPanel { get; private set; }
@@ -73,9 +74,13 @@ namespace craftingTask.view.windows.windows_dialogs.panel_dialogs
       };
     }
 
-    private void btnMinimizeWindow_Click(object sender, RoutedEventArgs e)
+    private void btnMinimizeWindowClick(object sender, RoutedEventArgs e)
     {
       this.WindowState = WindowState.Minimized;
+    }
+    private void btnCloseWindowClick(object sender, RoutedEventArgs e)
+    {
+      this.Close();
     }
     private void btnCancelCreation_Click(object sender, RoutedEventArgs e)
     {
@@ -98,6 +103,8 @@ namespace craftingTask.view.windows.windows_dialogs.panel_dialogs
 
       this.CreatedPanel = panel;
       this.DialogResult = true;
+
+      PanelCreated.Invoke(panel);
       this.Close();
     }
 

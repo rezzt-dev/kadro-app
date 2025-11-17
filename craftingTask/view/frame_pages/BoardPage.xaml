@@ -4,9 +4,49 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:craftingTask.view.frame_pages"
+      xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop" xmlns:local1="clr-namespace:craftingTask.view.helpers"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="1200"
       Title="BoardPage">
+
+  <Page.Resources>
+    <DataTemplate x:Key="DefaultAdornerTemplate">
+      <Border Background="{StaticResource TaskBackground}" BorderBrush="{Binding Color}" BorderThickness="1" CornerRadius="10" 
+              Padding="16" Margin="6" Opacity="1" Width="300">
+        <Border.RenderTransform>
+          <TranslateTransform X="-130" Y="80"/>
+        </Border.RenderTransform>
+        <Border.Effect>
+          <DropShadowEffect BlurRadius="14" ShadowDepth="2" Opacity="0.4"/>
+        </Border.Effect>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+          </Grid.RowDefinitions>
+          <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="{Binding Title}" Foreground="{StaticResource TaskTitleForeground}" FontWeight="SemiBold" 
+                       FontSize="17" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding EndDate}" Foreground="{StaticResource TaskEndDateForeground}" FontSize="12" Margin="0,2,0,0"/>
+          </StackPanel>
+          <Border Grid.Row="1" Height="1" Background="{StaticResource TaskBorder}" Opacity="0.25" Margin="0,0,0,10"/>
+          <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
+            <Border CornerRadius="6" Padding="6,2" Margin="6,0,8,0" BorderBrush="{StaticResource TaskPriorityBorder}" 
+                    Background="#10FFFFFF">
+              <TextBlock Text="{Binding Priority}" Foreground="{StaticResource TaskPriorityForeground}" FontSize="12" 
+                         FontWeight="Medium"/>
+            </Border>
+            <Border CornerRadius="6" Padding="6,2" BorderBrush="{StaticResource TaskTagBorder}" 
+                    Background="{StaticResource TaskTagBackground}">
+              <TextBlock Text="{Binding Tag}" Foreground="{StaticResource TaskTagForeground}" FontSize="11"/>
+            </Border>
+          </StackPanel>
+        </Grid>
+      </Border>
+    </DataTemplate>
+  </Page.Resources>
+  
   <Border Background="{StaticResource SecondaryBackground}" CornerRadius="10">
     <Grid Margin="5">
       <Grid.RowDefinitions>
@@ -30,9 +70,9 @@
           </Grid.ColumnDefinitions>
 
           <Button x:Name="btnCreateTask" Grid.Column="0" Margin="0,0,2.5,0" Style="{StaticResource FunctionButtonStyle}" Content="Crear Tarea"
-                  VerticalAlignment="Center" Padding="0,4"/>
+                  VerticalAlignment="Center" Padding="0,4" Click="btnCreateTask_Click"/>
           <Button x:Name="btnArchiveTasks" Grid.Column="1" Margin="2.5,0,0,0" Style="{StaticResource FunctionButtonStyle}" Content="Archivar Tareas"
-                  VerticalAlignment="Center" Padding="0,4"/>
+                  VerticalAlignment="Center" Padding="0,4" Click="btnArchiveTasks_Click"/>
         </Grid>
         
         <Button Grid.Column="1" x:Name="btnCloseFrame" Click="btnCloseBoardFrame" Style="{StaticResource CloseFrameButton}" 
@@ -53,11 +93,11 @@
                 VerticalAlignment="Center" Padding="50,4" Click="btnDeletePanels_Click"/>
         
         <Button x:Name="btnShowArchiveTasks" Grid.Column="3" Style="{StaticResource FunctionButtonStyle}" Content="Ver Archivo"
-                HorizontalAlignment="Right" VerticalAlignment="Center" Padding="50,4" VerticalContentAlignment="Center"/>
+                HorizontalAlignment="Right" VerticalAlignment="Center" Padding="50,4" VerticalContentAlignment="Center" Click="btnShowArchiveTasks_Click"/>
       </Grid>
 
       <Grid Grid.Row="1">
-        <ListBox ItemsSource="{Binding PanelList}" BorderThickness="0" Margin="0"
+        <ListBox x:Name="panelListBox" ItemsSource="{Binding PanelList}" BorderThickness="0" Margin="0"
                  ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  HorizontalContentAlignment="Stretch" SelectionMode="Single" Background="Transparent"
                  ScrollViewer.CanContentScroll="False">
@@ -69,7 +109,7 @@
 
           <ListBox.ItemsPanel>
             <ItemsPanelTemplate>
-              <VirtualizingStackPanel Orientation="Horizontal" />
+              <VirtualizingStackPanel Orientation="Horizontal" VirtualizingStackPanel.IsVirtualizing="False" />
             </ItemsPanelTemplate>
           </ListBox.ItemsPanel>
 
@@ -79,6 +119,7 @@
               <Setter Property="Padding" Value="0" />
               <Setter Property="Margin" Value="0" />
               <Setter Property="Focusable" Value="False" />
+              <Setter Property="dd:DragDrop.DropHandler" Value="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DefaultDropHandler}" />
               <Setter Property="Template">
                 <Setter.Value>
                   <ControlTemplate TargetType="ListBoxItem">
@@ -107,15 +148,14 @@
                      FontSize="16" FontWeight="Bold" Margin="0,0,0,10"
                      HorizontalAlignment="Center" />
 
-                  <ListBox Grid.Row="1" ItemsSource="{Binding TaskList}" Margin="5"
-                   Background="{StaticResource PanelBackground}" BorderThickness="0"
-                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                   ScrollViewer.VerticalScrollBarVisibility="Auto"
-                   ScrollViewer.CanContentScroll="False">
+                  <ListBox Grid.Row="1" ItemsSource="{Binding TaskList}" Margin="5" Background="{StaticResource PanelBackground}" 
+                           BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                           ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="False"
+                           dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.UseDefaultDragAdorner="True"
+                           dd:DragDrop.DragAdornerTemplate="{StaticResource DefaultAdornerTemplate}">
 
                     <ListBox.Resources>
-                      <Style TargetType="ScrollBar"
-                     BasedOn="{StaticResource DarkScrollBarStyle}" />
+                      <Style TargetType="ScrollBar" BasedOn="{StaticResource DarkScrollBarStyle}" />
                     </ListBox.Resources>
 
                     <ListBox.ItemsPanel>

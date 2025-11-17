@@ -74,6 +74,10 @@ namespace craftingTask.view.windows.windows_dialogs
     {
       this.WindowState = WindowState.Minimized;
     }
+    private void btnCloseWindowClick(object sender, RoutedEventArgs e)
+    {
+      this.Close();
+    }
     private void btnCancelCreationClick(object sender, RoutedEventArgs e)
     {
       this.Close();

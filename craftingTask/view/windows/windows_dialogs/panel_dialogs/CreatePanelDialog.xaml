@@ -18,14 +18,16 @@
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="22"/>
+          <ColumnDefinition Width="22"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="minimizeButton" Click="btnMinimizeWindow_Click" Style="{StaticResource MinimizeWindowButton}" Grid.Column="1" Width="auto" Height="auto" Margin="4,6,6,4"/>
+        <Button x:Name="minimizeButton" Click="btnMinimizeWindowClick" Style="{StaticResource MinimizeWindowButton}" Grid.Column="1" Width="auto" Height="auto" Margin="4,6,6,4"/>
+        <Button x:Name="closeButton" Click="btnCloseWindowClick" Style="{StaticResource CloseWindowButton}" Grid.Column="2" Width="auto" Height="auto" Margin="4,6,6,4"/>
       </Grid>
 
       <Grid x:Name="content" Grid.Row="1">
         <Grid.RowDefinitions>
           <RowDefinition Height="*"/>
-          <RowDefinition Height="35"/>
+          <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Margin="5" CornerRadius="12">
@@ -43,9 +45,9 @@
               </Grid.RowDefinitions>
 
               <TextBlock Grid.Row="0" Text="NOMBRE DEL PANEL" FontSize="24" FontWeight="DemiBold" Foreground="{StaticResource MainForeground}"
-             VerticalAlignment="Bottom" Margin="15,0,0,5"/>
-              <TextBox x:Name="txtPanelNameSelector" Grid.Row="1" FontSize="18" FontWeight="Normal" VerticalAlignment="Top" Margin="5,0,5,10" Style="{StaticResource PanelTextBoxStyle}"
-           Height="35"/>
+                         VerticalAlignment="Bottom" Margin="15,0,0,5"/>
+              <TextBox x:Name="txtPanelNameSelector" Grid.Row="1" FontSize="18" FontWeight="Normal" VerticalAlignment="Top" Margin="5,0,5,10" 
+                       Style="{StaticResource PanelTextBoxStyle}" Height="35"/>
               <Border Grid.Row="1" VerticalAlignment="Bottom" Background="{StaticResource SecondaryBackground}" Width="Auto" Height="2"/>
             </Grid>
 

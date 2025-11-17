@@ -13,19 +13,31 @@
       <Border Background="{Binding SelectedBrush, RelativeSource={RelativeSource AncestorType=UserControl}}" Style="{StaticResource PopupPreviewBorderStyle}"/>
 
       <Border CornerRadius="8" BorderBrush="{StaticResource MainBorderColor}" BorderThickness="2" Height="140" Width="230">
-        <Rectangle x:Name="ColorPalette" Cursor="Cross" RadiusX="7" RadiusY="7">
-          <Rectangle.Fill>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-              <GradientStop Color="#FF0000" Offset="0.0"/>
-              <GradientStop Color="#FFFF00" Offset="0.17"/>
-              <GradientStop Color="#00FF00" Offset="0.33"/>
-              <GradientStop Color="#00FFFF" Offset="0.50"/>
-              <GradientStop Color="#0000FF" Offset="0.66"/>
-              <GradientStop Color="#FF00FF" Offset="0.82"/>
-              <GradientStop Color="#FF0000" Offset="1.0"/>
-            </LinearGradientBrush>
-          </Rectangle.Fill>
-        </Rectangle>
+        <Grid x:Name="ColorPaletteGrid" ClipToBounds="True">
+          <Rectangle RadiusX="7" RadiusY="7">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#FF0000" Offset="0.0"/>
+                <GradientStop Color="#FFFF00" Offset="0.17"/>
+                <GradientStop Color="#00FF00" Offset="0.33"/>
+                <GradientStop Color="#00FFFF" Offset="0.50"/>
+                <GradientStop Color="#0000FF" Offset="0.66"/>
+                <GradientStop Color="#FF00FF" Offset="0.82"/>
+                <GradientStop Color="#FF0000" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+
+          <Rectangle RadiusX="7" RadiusY="7">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#FFFFFFFF" Offset="0.0"/>
+                <GradientStop Color="#00FFFFFF" Offset="0.5"/>
+                <GradientStop Color="#FF000000" Offset="1.0"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+        </Grid>
       </Border>
 
       <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,8,0,0">

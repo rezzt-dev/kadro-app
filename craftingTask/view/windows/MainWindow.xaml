@@ -82,7 +82,7 @@
             </Grid>
           </Grid>
         </Border>
-        <TextBlock Name="welcomeMessage" Grid.Column="1" Text="Welcome to Crafting Tasks" FontFamily="Poppins" FontSize="28"
+        <TextBlock Name="welcomeMessage" Grid.Column="1" Text="Welcome to Kadro" FontFamily="Poppins" FontSize="28"
                    VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{StaticResource BackgroundForeground}"/>
         <Frame Name="boardsFrame" Grid.Column="1" Margin="5,10,10,10" NavigationUIVisibility="Hidden">
           
