@@ -1,9 +1,9 @@
-# CRAFTING TASKS
+# KADRO
 Gestor local de tableros y tareas con interfaz moderna desarrollada en WPF y C#.
 
 ---
 ### DESCRIPCION GENERAL
-**CraftingTask** es una aplicación local diseñada para la gestión y administración de tableros y tareas.  
+**Kadro** es una aplicación local diseñada para la gestión y administración de tableros y tareas.  
 Permite organizar el flujo de trabajo mediante paneles configurables al estilo Kanban, proporcionando una visualización clara y adaptable a las necesidades del usuario.
 
 Las principales funcionalidades incluyen:
@@ -26,7 +26,7 @@ Las principales funcionalidades incluyen:
 
 ---
 ### ESTRUCTURA DEL SISTEMA Y MODELO DE DATOS
-CraftingTask utiliza una estructura clara y extensible basada en cuatro entidades principales: Board, Panel, Task y Status.
+Kadro utiliza una estructura clara y extensible basada en cuatro entidades principales: Board, Panel, Task y Status.
 
 #### 1. BOARD
 Representa un tablero contenedor de paneles.
@@ -76,8 +76,8 @@ Define el estado de una tarea.
 ### INSTALACION Y EJECUCION
 #### 1. CLONACION DEL REPOSITORIO
 ```sh
-git clone https://github.com/usuario/CraftingTask.git
-cd CraftingTask
+git clone https://github.com/usuario/Kadro.git
+cd Kadro
 ```
 
 ---
