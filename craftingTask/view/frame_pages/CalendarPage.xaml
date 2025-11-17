@@ -139,7 +139,7 @@
               <!-- Panel mensual -->
               <Grid x:Name="MonthlyPanel">
                 <!-- Título del mes -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 25">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 -70 0 25">
                   <TextBlock Text="◀" FontSize="32" Margin="0 0 20 0" Cursor="Hand" Foreground="White" MouseDown="PrevMonth_Click"/>
                   <TextBlock Text="{Binding CurrentMonthString}" FontSize="34" Foreground="White" FontWeight="SemiBold"/>
                   <TextBlock Text="▶" FontSize="32" Margin="20 0 0 0" Cursor="Hand" Foreground="White" MouseDown="NextMonth_Click"/>
@@ -189,7 +189,7 @@
                     <ItemsControl ItemsSource="{Binding YearMonths}">
                       <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                          <UniformGrid Columns="3"/>
+                          <UniformGrid Columns="4"/>
                         </ItemsPanelTemplate>
                       </ItemsControl.ItemsPanel>
 
