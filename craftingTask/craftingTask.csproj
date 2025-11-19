@@ -10,6 +10,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="resources\fonts\Poppins-Black.ttf" />
+    <None Remove="resources\fonts\Poppins-BlackItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-Bold.ttf" />
+    <None Remove="resources\fonts\Poppins-BoldItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-ExtraBold.ttf" />
+    <None Remove="resources\fonts\Poppins-ExtraBoldItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-ExtraLight.ttf" />
+    <None Remove="resources\fonts\Poppins-ExtraLightItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-Italic.ttf" />
+    <None Remove="resources\fonts\Poppins-Light.ttf" />
+    <None Remove="resources\fonts\Poppins-LightItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-Medium.ttf" />
+    <None Remove="resources\fonts\Poppins-MediumItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-Regular.ttf" />
+    <None Remove="resources\fonts\Poppins-SemiBold.ttf" />
+    <None Remove="resources\fonts\Poppins-SemiBoldItalic.ttf" />
+    <None Remove="resources\fonts\Poppins-Thin.ttf" />
+    <None Remove="resources\fonts\Poppins-ThinItalic.ttf" />
     <None Remove="resources\images\icon\icono-kadro.ico" />
     <None Remove="resources\images\plus-add.ico" />
   </ItemGroup>
@@ -27,6 +45,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="resources\fonts\Poppins-Black.ttf">
+      <CopyToOutputDirectory></CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="resources\fonts\Poppins-BlackItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Bold.ttf" />
+    <Resource Include="resources\fonts\Poppins-BoldItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-ExtraBold.ttf" />
+    <Resource Include="resources\fonts\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-ExtraLight.ttf" />
+    <Resource Include="resources\fonts\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Italic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Light.ttf" />
+    <Resource Include="resources\fonts\Poppins-LightItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Medium.ttf" />
+    <Resource Include="resources\fonts\Poppins-MediumItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Regular.ttf" />
+    <Resource Include="resources\fonts\Poppins-SemiBold.ttf" />
+    <Resource Include="resources\fonts\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="resources\fonts\Poppins-Thin.ttf" />
+    <Resource Include="resources\fonts\Poppins-ThinItalic.ttf" />
     <Resource Include="resources\images\icon\icono-kadro.ico" />
     <Resource Include="resources\images\plus-add.ico" />
   </ItemGroup>

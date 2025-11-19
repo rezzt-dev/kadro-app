@@ -6,8 +6,7 @@
       xmlns:local="clr-namespace:craftingTask.view.frame_pages"
       xmlns:local2="clr-namespace:craftingTask.persistence"
       mc:Ignorable="d" 
-      d:DesignWidth="1400" d:DesignHeight="900"
-      Title="RemindersPage">
+      d:DesignWidth="1400" d:DesignHeight="900">
 
   <Page.Resources>
     <local2:PriorityToStringConverter x:Key="PriorityToStringConverter" />

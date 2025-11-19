@@ -74,10 +74,12 @@ namespace craftingTask
       if (this.WindowState == WindowState.Maximized)
       {
         this.WindowState = WindowState.Normal;
+        this.mainBorder.Padding = new Thickness(0);
       }
       else
       {
         this.WindowState = WindowState.Maximized;
+        this.mainBorder.Padding = new Thickness(10);
       }
     }
 
@@ -134,14 +136,7 @@ namespace craftingTask
     {
       try
       {
-        var allTasks = taskManager.GetAllTasks();
-
-        var upcomingTasks = allTasks.Where(t =>
-          t.EndDate >= DateTime.Now &&
-          t.EndDate <= DateTime.Now.AddDays(7) &&
-          t.StatusId != 3 &&
-          t.StatusId != 4    
-        ).ToList();
+        var upcomingTasks = taskManager.GetUpcomingTasks();
 
         int taskCount = upcomingTasks.Count;
 
@@ -149,11 +144,11 @@ namespace craftingTask
         {
           if (taskCount == 1)
           {
-            txtNotificationMessage.Text = "Tienes 1 tarea próxima a vencer en los próximos 7 días.";
+            txtNotificationMessage.Text = "Tienes 1 tarea próxima a vencer en los próximos 4 días.";
           }
           else
           {
-            txtNotificationMessage.Text = $"Tienes {taskCount} tareas próximas a vencer en los próximos 7 días.";
+            txtNotificationMessage.Text = $"Tienes {taskCount} tareas próximas a vencer en los próximos 4 días.";
           }
 
           double windowWidth = contentArea.ActualWidth;

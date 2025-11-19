@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingTask\\",
+  "WorkspaceRootPath": "C:\\Users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingTask\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|c:\\users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingtask\\persistence\\managers\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:persistence\\managers\\taskmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|c:\\users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingtask\\view\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:view\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|c:\\users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingtask\\persistence\\managers\\statusmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:persistence\\managers\\statusmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|c:\\users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingtask\\view\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:view\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TaskManager.cs",
-              "DocumentMoniker": "C:\\Users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingTask\\persistence\\managers\\TaskManager.cs",
-              "RelativeDocumentMoniker": "persistence\\managers\\TaskManager.cs",
-              "ToolTip": "C:\\Users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingTask\\persistence\\managers\\TaskManager.cs",
-              "RelativeToolTip": "persistence\\managers\\TaskManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABIAAAAAAAAAA==",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "view\\windows\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml.cs*",
+              "RelativeToolTip": "view\\windows\\MainWindow.xaml.cs*",
+              "ViewState": "AgIAAFwAAAAAAAAAAADwv5YAAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T20:41:55.606Z",
+              "WhenOpened": "2025-11-19T22:59:28.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StatusManager.cs",
-              "DocumentMoniker": "C:\\Users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingTask\\persistence\\managers\\StatusManager.cs",
-              "RelativeDocumentMoniker": "persistence\\managers\\StatusManager.cs",
-              "ToolTip": "C:\\Users\\conta\\personal data\\develop-projects\\programms-project\\crafting-task-projects\\craftingTask\\persistence\\managers\\StatusManager.cs",
-              "RelativeToolTip": "persistence\\managers\\StatusManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-09T20:40:13.034Z",
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "view\\windows\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\conta\\repositorios\\projects-repositories\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml",
+              "RelativeToolTip": "view\\windows\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-19T22:52:34.612Z",
               "EditorCaption": ""
             }
           ]

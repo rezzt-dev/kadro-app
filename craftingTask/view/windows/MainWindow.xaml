@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:craftingTask"
-        mc:Ignorable="d"
-        Title="Crafting Tasks" Height="1000" Width="1700" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
-  <Border Background="{StaticResource MainBackground}" CornerRadius="12">
+        mc:Ignorable="d" 
+        Height="1000" Width="1700" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+  <Border x:Name="mainBorder" Background="{StaticResource MainBackground}" CornerRadius="12">
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="35"/>
@@ -17,17 +17,17 @@
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="200"/>
           <ColumnDefinition Width="200"/>
-          <ColumnDefinition Width="1231*"/>
+          <ColumnDefinition Width="*"/>
           <ColumnDefinition Width="25"/>
           <ColumnDefinition Width="25"/>
           <ColumnDefinition Width="25"/>
           <ColumnDefinition Width="3"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnShowReminders" Style="{StaticResource FunctionButtonStyle}" Grid.Column="0" Content="Recordatorios" FontSize="10"
-                Padding="5,2" Margin="5" Click="btnShowReminders_Click"/>
-        <Button x:Name="btnCalendarView" Style="{StaticResource FunctionButtonStyle}" Grid.Column="1" Content="Calendario" FontSize="10" 
-                Padding="5,2" Margin="5" Click="btnCalendarView_Click"/>
+        <Button x:Name="btnShowReminders" Grid.Column="0" Content="Recordatorios" FontSize="8" Style="{StaticResource FunctionButtonStyle}"
+                Padding="0" Margin="5" Click="btnShowReminders_Click"/>
+        <Button x:Name="btnCalendarView" Grid.Column="1" Content="Calendario" FontSize="8" Style="{StaticResource FunctionButtonStyle}"
+                Padding="0" Margin="5" Click="btnCalendarView_Click"/>
 
         <Grid Grid.Column="3" Grid.ColumnSpan="3">
           <Grid.ColumnDefinitions>
@@ -57,14 +57,26 @@
               <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                   <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                  <Setter Property="Background" Value="Transparent"/>
+                  <Setter Property="BorderThickness" Value="0"/>
+                  <Setter Property="Padding" Value="0"/>
+                  <Setter Property="Margin" Value="0"/>
+                  <Setter Property="Template">
+                    <Setter.Value>
+                      <ControlTemplate TargetType="ListViewItem">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                          <ContentPresenter />
+                        </Border>
+                      </ControlTemplate>
+                    </Setter.Value>
+                  </Setter>
                   <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_MouseDoubleClick"/>
-                  <!-- Para un solo clic 'MouseDoubleClick' -->
                 </Style>
               </ListView.ItemContainerStyle>
               <ListView.ItemTemplate>
                 <DataTemplate>
                   <Button Style="{StaticResource InvisibleButton}" HorizontalAlignment="Stretch">
-                    <Grid Margin="0,2.5,0,2.5">
+                    <Grid Margin="2,2.5,2,2.5">
                       <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="8"/>
                         <ColumnDefinition Width="*"/>

@@ -4,6 +4,23 @@
              xmlns:local="clr-namespace:craftingTask"
              StartupUri="view/windows/MainWindow.xaml">
   <Application.Resources>
+    <FontFamily x:Key="Poppins">./resources/fonts/#Poppins</FontFamily>
+
+    <Style TargetType="{x:Type Control}">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+      <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBlock}">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+      <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <Style TargetType="{x:Type Window}">
+      <Setter Property="FontFamily" Value="{StaticResource Poppins}"/>
+      <Setter Property="FontSize" Value="14"/>
+    </Style>
+
     <!-- ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ paleta de colores para estilos ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ -->
     <SolidColorBrush x:Key="MainBackground" Color="#101010"/>
     <SolidColorBrush x:Key="SecondaryBackground" Color="#141414"/>
@@ -167,17 +184,46 @@
       <Setter Property="BorderBrush" Value="Transparent"/>
       <Setter Property="BorderThickness" Value="0"/>
       <Setter Property="Padding" Value="0"/>
-      <Setter Property="OverridesDefaultStyle" Value="True"/>
-
+      <Setter Property="OverridesDefaultStyle" Value="False"/>
+      <Setter Property="Focusable" Value="False"/>
       <Setter Property="Template">
         <Setter.Value>
           <ControlTemplate TargetType="Button">
-            <ContentPresenter/>
+            <Grid>
+              <ContentPresenter />
+            </Grid>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+              </Trigger>
+              <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
           </ControlTemplate>
         </Setter.Value>
       </Setter>
+    </Style>
 
-      <Setter Property="Focusable" Value="False"/>
+    <Style x:Key="InvisibleListViewItem" TargetType="ListViewItem">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="Margin" Value="0"/>
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ListViewItem">
+            <Border Background="{TemplateBinding Background}" 
+                BorderThickness="0">
+              <ContentPresenter />
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
     </Style>
 
 
@@ -254,6 +300,7 @@
       <Setter Property="BorderBrush" Value="Transparent"/>
       <Setter Property="BorderThickness" Value="2"/>
       <Setter Property="Foreground" Value="White"/>
+      <Setter Property="FontSize" Value="8"/>
       <Setter Property="Cursor" Value="Hand"/>
       <Setter Property="Template">
         <Setter.Value>
