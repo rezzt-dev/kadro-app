@@ -160,3 +160,5 @@ D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Deb
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\crafting.33945146.Up2Date
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\craftingTask.genruntimeconfig.cache
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\ref\craftingTask.dll
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\frame_pages\RemindersPage.g.cs
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\frame_pages\RemindersPage.baml

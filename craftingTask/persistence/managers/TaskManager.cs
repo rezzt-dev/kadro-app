@@ -189,5 +189,24 @@ namespace craftingTask.persistence.managers
         return new List<model.objects.Task>();
       }
     }
+
+    public List<model.objects.Task> GetUpcomingTasks()
+    {
+      try
+      {
+        using (var broker = new DBBroker())
+        {
+          DateTime now = DateTime.UtcNow;
+          DateTime limit = now.AddDays(4);
+
+          string query = $"SELECT * FROM Task WHERE EndDate >= '{now:yyyy-MM-dd HH:mm:ss}' AND EndDate <= '{limit:yyyy-MM-dd HH:mm:ss}'";
+          return broker.ExecuteQuery<model.objects.Task>(query);
+        }
+      } catch (Exception ex)
+      {
+        MessageBox.Show("Error al obtener tareas próximas: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        return new List<model.objects.Task>();
+      }
+    }
   }
 }

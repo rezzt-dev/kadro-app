@@ -109,8 +109,8 @@ namespace craftingTask.view.windows.windows_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/board_dialogs/deleteboardsdi" +
-                    "alog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/craftingTask;V1.0.0.0;component/view/windows/windows_dialogs/board_dialogs/delet" +
+                    "eboardsdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\view\windows\windows_dialogs\board_dialogs\DeleteBoardsDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -11,6 +11,8 @@
     <SolidColorBrush x:Key="MainForeground" Color="#EBEBEB"/>
     <SolidColorBrush x:Key="SecondaryForeground" Color="#A8A8A8"/>
     <SolidColorBrush x:Key="MainBorderColor" Color="#2A2A2A"/>
+    <SolidColorBrush x:Key="TercerBackground" Color="#181818"/>
+    <SolidColorBrush x:Key="LeftPanelBackground" Color="#202020"/>
 
     <SolidColorBrush x:Key="PanelBackground" Color="#141414"/>
     <SolidColorBrush x:Key="PanelBorder" Color="#3B3B3B"/>
@@ -1066,8 +1068,170 @@
       </Setter>
     </Style>
 
+    <!-- ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ estilos para la pagina de Reminders ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ -->
+    <!-- Estilo para el botón de recordatorio en la lista (LeftPanel) -->
+    <Style x:Key="ReminderListButtonStyle" TargetType="Button">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="BorderBrush" Value="{StaticResource MainBorderColor}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="Padding" Value="12,10"/>
+      <Setter Property="Margin" Value="8,6"/>
+      <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+      <Setter Property="Cursor" Value="Hand"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="Button">
+            <Border x:Name="RootBorder"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="8"
+                Padding="{TemplateBinding Padding}"
+                SnapsToDevicePixels="True">
+              <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="Center"/>
+            </Border>
 
-    <!-- ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ estilo de calendar para la vista de calendario ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ -->
-    
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="RootBorder" Property="Background" Value="{StaticResource TaskBackground}"/>
+                <Setter TargetName="RootBorder" Property="BorderBrush" Value="{Binding Color}"/>
+                
+              </Trigger>
+
+              <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="RootBorder" Property="Background" Value="{StaticResource AddBoardButtonBackground}"/>
+                <Setter TargetName="RootBorder" Property="BorderBrush" Value="{Binding Color}"/>
+              </Trigger>
+
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="RootBorder" Property="Opacity" Value="0.5"/>
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <!-- Estilo para el ScrollViewer del LeftPanel -->
+    <Style x:Key="ReminderListScrollViewerStyle" TargetType="ScrollViewer">
+      <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+      <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="ScrollViewer">
+            <Grid>
+              <ScrollContentPresenter/>
+              <ScrollBar x:Name="PART_VerticalScrollBar"
+                    Style="{StaticResource DarkScrollBarStyle}"
+                    Maximum="{TemplateBinding ScrollableHeight}"
+                    ViewportSize="{TemplateBinding ViewportHeight}"
+                    Value="{TemplateBinding VerticalOffset}"
+                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                    HorizontalAlignment="Right"
+                    Margin="0,8,4,8"/>
+            </Grid>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+    <!-- Estilo para el contenedor de información de tarea (InfoSection) -->
+    <Style x:Key="ReminderInfoContainerStyle" TargetType="Border">
+      <Setter Property="Background" Value="Transparent"/>
+      <Setter Property="Padding" Value="24"/>
+    </Style>
+
+    <!-- Estilo para el título de la tarea en InfoSection -->
+    <Style x:Key="ReminderInfoTitleStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="24"/>
+      <Setter Property="FontWeight" Value="Bold"/>
+      <Setter Property="Foreground" Value="{StaticResource TaskTitleForeground}"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+
+    <!-- Estilo para la descripción en InfoSection -->
+    <Style x:Key="ReminderInfoDescriptionStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="14"/>
+      <Setter Property="Foreground" Value="{StaticResource SecondaryForeground}"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="LineHeight" Value="20"/>
+      <Setter Property="Margin" Value="0,0,0,16"/>
+    </Style>
+
+    <!-- Estilo para labels de información (Fecha, Prioridad, Tag) -->
+    <Style x:Key="ReminderInfoLabelStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Foreground" Value="{StaticResource TaskEndDateForeground}"/>
+      <Setter Property="Margin" Value="0,0,8,0"/>
+    </Style>
+
+    <!-- Estilo para valores de información -->
+    <Style x:Key="ReminderInfoValueStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="13"/>
+      <Setter Property="Foreground" Value="{StaticResource MainForeground}"/>
+    </Style>
+
+    <!-- Estilo para el contenedor de metadatos (fecha, prioridad, tag) -->
+    <Style x:Key="ReminderMetadataContainerStyle" TargetType="Border">
+      <Setter Property="Background" Value="{StaticResource TaskBackground}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource TaskBorder}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="8"/>
+      <Setter Property="Padding" Value="12,10"/>
+      <Setter Property="Margin" Value="0,0,0,12"/>
+    </Style>
+
+    <!-- Estilo para el tag/etiqueta en InfoSection -->
+    <Style x:Key="ReminderTagStyle" TargetType="Border">
+      <Setter Property="Background" Value="{StaticResource TaskTagBackground}"/>
+      <Setter Property="BorderBrush" Value="{StaticResource TaskTagBorder}"/>
+      <Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="Padding" Value="10,6"/>
+      <Setter Property="HorizontalAlignment" Value="Left"/>
+      <Setter Property="Margin" Value="0,8,0,0"/>
+    </Style>
+
+    <Style x:Key="ReminderTagTextStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="FontWeight" Value="Medium"/>
+      <Setter Property="Foreground" Value="{StaticResource TaskTagForeground}"/>
+    </Style>
+
+    <!-- Estilo para indicador de prioridad -->
+    <Style x:Key="ReminderPriorityIndicatorStyle" TargetType="Border">
+      <Setter Property="Width" Value="4"/>
+      <Setter Property="CornerRadius" Value="2"/>
+      <Setter Property="Margin" Value="0,0,12,0"/>
+    </Style>
+
+    <!-- Estilo para mensaje cuando no hay tarea seleccionada -->
+    <Style x:Key="ReminderEmptyMessageStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="16"/>
+      <Setter Property="Foreground" Value="{StaticResource SecondaryForeground}"/>
+      <Setter Property="HorizontalAlignment" Value="Center"/>
+      <Setter Property="VerticalAlignment" Value="Center"/>
+      <Setter Property="TextWrapping" Value="Wrap"/>
+      <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+    <!-- Estilo para el título en la lista del LeftPanel -->
+    <Style x:Key="ReminderListItemTitleStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="15"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="Foreground" Value="{StaticResource TaskTitleForeground}"/>
+      <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+      <Setter Property="Margin" Value="0,0,0,4"/>
+    </Style>
+
+    <!-- Estilo para la fecha en la lista del LeftPanel -->
+    <Style x:Key="ReminderListItemDateStyle" TargetType="TextBlock">
+      <Setter Property="FontSize" Value="12"/>
+      <Setter Property="Foreground" Value="{StaticResource TaskEndDateForeground}"/>
+    </Style>
+
   </Application.Resources>
 </Application>

@@ -1,0 +1,136 @@
+﻿<Page x:Class="craftingTask.view.frame_pages.RemindersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:craftingTask.view.frame_pages"
+      xmlns:local2="clr-namespace:craftingTask.persistence"
+      mc:Ignorable="d" 
+      d:DesignWidth="1400" d:DesignHeight="900"
+      Title="RemindersPage">
+
+  <Page.Resources>
+    <local2:PriorityToStringConverter x:Key="PriorityToStringConverter" />
+  </Page.Resources>
+  
+  <Border>
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="30"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="420"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="{StaticResource LeftPanelBackground}" Grid.Column="0" CornerRadius="10 0 0 0"/>
+        <Border Background="{StaticResource TercerBackground}" Grid.Column="1"/>
+        <Border Background="{StaticResource TercerBackground}" Grid.Column="2" CornerRadius="0,10,0,0"/>
+        <Button Grid.Column="2" x:Name="btnCloseFrame" Click="btnCloseReminderFrame" Style="{StaticResource CloseFrameButton}" 
+                Width="15" Height="15" Margin="3,3,13,-7" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+      </Grid>
+
+      <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="420"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border x:Name="ReminderListSection" Grid.Column="0" Background="{StaticResource LeftPanelBackground}" CornerRadius="0 0 0 10">
+          <ScrollViewer Style="{StaticResource ReminderListScrollViewerStyle}" Margin="5">
+            <ItemsControl ItemsSource="{Binding UpcomingTasks}" Margin="0,8">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <Button Command="{Binding DataContext.ShowTaskInfoCommand, RelativeSource={RelativeSource AncestorType=Page}}" 
+                          CommandParameter="{Binding}"
+                          Style="{StaticResource ReminderListButtonStyle}" BorderBrush="{Binding Color}" BorderThickness="2">
+                    <StackPanel Orientation="Vertical">
+                      <TextBlock Text="{Binding Title}" 
+                                 Style="{StaticResource ReminderListItemTitleStyle}"/>
+                      <TextBlock Text="{Binding EndDate, StringFormat='Vence: {0:dd/MM/yyyy}'}" 
+                                 Style="{StaticResource ReminderListItemDateStyle}"/>
+                    </StackPanel>
+                  </Button>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </ScrollViewer>
+        </Border>
+
+        <Border x:Name="ReminderInfoSection" Grid.Column="1" Background="{StaticResource TercerBackground}" CornerRadius="0 0 10 0" Padding="24">
+          <Grid DataContext="{Binding SelectedTask}">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"  Text="{Binding Title}"  Style="{StaticResource ReminderInfoTitleStyle}"/>
+            <TextBlock Grid.Row="1"  Text="{Binding Description}" Style="{StaticResource ReminderInfoDescriptionStyle}"/>
+
+            <Border Grid.Row="2" Style="{StaticResource ReminderMetadataContainerStyle}">
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Vence:"  Style="{StaticResource ReminderInfoLabelStyle}"/>
+                <TextBlock Text="{Binding EndDate, StringFormat='{}{0:dd/MM/yyyy}'}"  Style="{StaticResource ReminderInfoValueStyle}" />
+              </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="3" Orientation="Vertical">
+              <Border Style="{StaticResource ReminderMetadataContainerStyle}">
+                <StackPanel Orientation="Horizontal">
+                  <Border>
+                    <Border.Style>
+                      <Style TargetType="Border" BasedOn="{StaticResource ReminderPriorityIndicatorStyle}">
+                        <Setter Property="Background" Value="#F0F0F0"/>
+                        <Style.Triggers>
+                          <DataTrigger Binding="{Binding Priority}" Value="1">
+                            <Setter Property="Background" Value="#FF453A"/>
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding Priority}" Value="2">
+                            <Setter Property="Background" Value="#FFD60A"/>
+                          </DataTrigger>
+                          <DataTrigger Binding="{Binding Priority}" Value="3">
+                            <Setter Property="Background" Value="#30D158"/>
+                          </DataTrigger>
+                        </Style.Triggers>
+                      </Style>
+                    </Border.Style>
+                  </Border>
+                  <TextBlock Text="Prioridad:" Style="{StaticResource ReminderInfoLabelStyle}"/>
+                  <TextBlock Text="{Binding Priority, Converter={StaticResource PriorityToStringConverter}}" 
+                             Style="{StaticResource ReminderInfoValueStyle}"/>
+                </StackPanel>
+              </Border>
+
+              <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <TextBlock Text="Etiqueta:" Style="{StaticResource ReminderInfoLabelStyle}" VerticalAlignment="Center" Margin="0,0,12,-7"/>
+                <Border Style="{StaticResource ReminderTagStyle}" VerticalAlignment="Center">
+                  <TextBlock Text="{Binding Tag}" Style="{StaticResource ReminderTagTextStyle}"/>
+                </Border>
+              </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Row="0" Grid.RowSpan="5" Text="Selecciona un recordatorio para ver sus detalles">
+              <TextBlock.Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource ReminderEmptyMessageStyle}">
+                  <Setter Property="Visibility" Value="Collapsed"/>
+                  <Style.Triggers>
+                    <DataTrigger Binding="{Binding}" Value="{x:Null}">
+                      <Setter Property="Visibility" Value="Visible"/>
+                    </DataTrigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBlock.Style>
+            </TextBlock>
+          </Grid>
+        </Border>
+      </Grid>
+    </Grid>
+  </Border>
+</Page>

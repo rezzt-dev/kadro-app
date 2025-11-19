@@ -42,7 +42,7 @@ namespace craftingTask.view.frame_pages
       UpdateDayTags();
     }
 
-    private void btnCloseBoardFrame(object sender, RoutedEventArgs e)
+    private void btnCloseCalendarFrame(object sender, RoutedEventArgs e)
     {
       Frame? parentFrame = HelpMethods.FindParentFrame(this);
       if (parentFrame != null)

@@ -78,7 +78,7 @@
         <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0" Margin="0,0,0,0">
+      <Grid Grid.Row="0">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="420"/>
           <ColumnDefinition Width="*"/>
@@ -87,8 +87,8 @@
 
         <Border Grid.Column="0" Background="#202020" CornerRadius="10 0 0 0"/>
         <Border Grid.Column="1" Background="#181818"/>
-        <Border Grid.Column="2" Background="#181818" CornerRadius="0,8,0,0"/>
-        <Button Grid.Column="2" x:Name="btnCloseFrame" Click="btnCloseBoardFrame" Style="{StaticResource CloseFrameButton}" 
+        <Border Grid.Column="2" Background="#181818" CornerRadius="0,10,0,0"/>
+        <Button Grid.Column="2" x:Name="btnCloseFrame" Click="btnCloseCalendarFrame" Style="{StaticResource CloseFrameButton}" 
                 Width="15" Height="15" Margin="3,3,13,-7" HorizontalAlignment="Right" VerticalAlignment="Center"/>
       </Grid>
 

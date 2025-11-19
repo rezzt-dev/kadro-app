@@ -7,7 +7,7 @@
       xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop" xmlns:local1="clr-namespace:craftingTask.view.helpers"
       xmlns:local2="clr-namespace:craftingTask.persistence"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="1200"
+      d:DesignWidth="1400" d:DesignHeight="900"
       Title="BoardPage">
 
   <Page.Resources>

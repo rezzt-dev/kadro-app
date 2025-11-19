@@ -16,7 +16,7 @@
       <Grid x:Name="titleBar" Grid.Row="0">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="200"/>
-          <ColumnDefinition Width="161*"/>
+          <ColumnDefinition Width="200"/>
           <ColumnDefinition Width="1231*"/>
           <ColumnDefinition Width="25"/>
           <ColumnDefinition Width="25"/>
@@ -24,7 +24,9 @@
           <ColumnDefinition Width="3"/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="btnCalendarView" Style="{StaticResource FunctionButtonStyle}" Grid.Column="0" Content="Calendario" FontSize="10" 
+        <Button x:Name="btnShowReminders" Style="{StaticResource FunctionButtonStyle}" Grid.Column="0" Content="Recordatorios" FontSize="10"
+                Padding="5,2" Margin="5" Click="btnShowReminders_Click"/>
+        <Button x:Name="btnCalendarView" Style="{StaticResource FunctionButtonStyle}" Grid.Column="1" Content="Calendario" FontSize="10" 
                 Padding="5,2" Margin="5" Click="btnCalendarView_Click"/>
 
         <Grid Grid.Column="3" Grid.ColumnSpan="3">
@@ -73,7 +75,7 @@
                           <TextBlock Text="{Binding CreationDate}" FontSize="9" Foreground="White" Margin="0,8,0,0"/>
                         </StackPanel>
                       </Border>
-                      <Border Grid.Column="0" Width="8" HorizontalAlignment="Left" Background="{Binding Color}" />
+                      <Border Grid.Column="0" Width="10" CornerRadius="8 0 0 8" HorizontalAlignment="Left" Background="{Binding Color}" />
                     </Grid>
                   </Button>
                 </DataTemplate>
@@ -100,6 +102,49 @@
 
         </Frame>
       </Grid>
+      
+       <!-- PopUp de Notificacion de Inicio -->
+      <Popup x:Name="NotificationPopup" AllowsTransparency="True" Placement="Relative" PlacementTarget="{Binding ElementName=contentArea}" 
+             IsOpen="False" StaysOpen="True">
+        <Border Background="{StaticResource TaskBackground}" BorderBrush="{StaticResource TaskBorder}" BorderThickness="1" CornerRadius="10" 
+                Padding="16,12" MinWidth="280" MaxWidth="350">
+          <Border.Effect>
+            <DropShadowEffect Color="Black" Direction="270" ShadowDepth="3" BlurRadius="15" Opacity="0.5"/>
+          </Border.Effect>
+
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+              <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0,0,0,8">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+              </Grid.ColumnDefinitions>
+
+              <TextBlock Grid.Column="0" Text="⏰" FontSize="20" VerticalAlignment="Center" Margin="0,0,8,0"/>
+
+              <TextBlock Grid.Column="1" Text="Recordatorio de Tareas" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource TaskTitleForeground}"
+                         VerticalAlignment="Center"/>
+
+              <Button Grid.Column="2" x:Name="btnCloseNotification" Click="btnCloseNotification_Click" Style="{StaticResource InvisibleButton}"
+                      Width="20" Height="20" VerticalAlignment="Center" Cursor="Hand">
+                <TextBlock Text="✕" FontSize="16" Foreground="{StaticResource SecondaryForeground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+              </Button>
+            </Grid>
+
+            <TextBlock Grid.Row="1" x:Name="txtNotificationMessage" Text="Tienes 5 tareas próximas a vencer" FontSize="13" 
+                       Foreground="{StaticResource SecondaryForeground}" TextWrapping="Wrap" LineHeight="18" Margin="0,0,0,12"/>
+
+            <Button Grid.Row="2" x:Name="btnViewReminders" Click="btnViewReminders_Click" Style="{StaticResource FunctionButtonStyle}"
+                    Content="Ver Recordatorios" HorizontalAlignment="Stretch" Padding="0,6"/>
+          </Grid>
+        </Border>
+      </Popup>
     </Grid>
   </Border>
 </Window>
