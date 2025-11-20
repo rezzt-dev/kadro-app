@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:craftingTask.resources.drawable"
              mc:Ignorable="d" 
-             MinWidth="260" MinHeight="260">
+             MinWidth="290" MinHeight="310">
   <Border Padding="12" CornerRadius="10" Background="{StaticResource PopupBackground}" BorderBrush="{StaticResource PopupBorder}" BorderThickness="1">
     <StackPanel>
       <TextBlock Text="Seleccionar color" Foreground="{StaticResource PopupForeground}" FontSize="14" FontWeight="SemiBold" Margin="0,0,0,8"/>
@@ -46,9 +46,16 @@
                  Style="{StaticResource SimpleDarkTextBoxStyle}" Width="200"/>
       </StackPanel>
 
-      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-        <Button Content="Cancelar" Click="BtnCancel_Click" Style="{StaticResource PopupButtonStyle}" FontSize="10" VerticalContentAlignment="Center"/>
-        <Button Content="Aceptar" Click="BtnAccept_Click" Style="{StaticResource PopupButtonStyle}" FontSize="10" VerticalContentAlignment="Center"/>
+      <StackPanel Orientation="Horizontal" Margin="0 12 0 0" HorizontalAlignment="Right">
+        <Grid Margin="0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+          </Grid.ColumnDefinitions>
+          <Button Content="Cancelar" Width="100" Height="35" Grid.Column="0" Click="BtnCancel_Click" Style="{StaticResource PopupButtonStyle}" FontSize="10" VerticalContentAlignment="Center"
+          HorizontalAlignment="Stretch"/>
+          <Button Content="Aceptar" Width="100" Height="35" Grid.Column="1" Click="BtnAccept_Click" Style="{StaticResource PopupButtonStyle}" FontSize="10" VerticalContentAlignment="Center"/>
+        </Grid>
       </StackPanel>
     </StackPanel>
   </Border>

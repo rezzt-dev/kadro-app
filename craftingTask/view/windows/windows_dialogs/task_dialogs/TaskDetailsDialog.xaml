@@ -76,10 +76,11 @@
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Width="35" Height="35" VerticalAlignment="Center" Background="#1E88E5" CornerRadius="25" Opacity="0.2">
-                      <Viewbox Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Width="35" Height="35" VerticalAlignment="Center" Background="#1E88E5" CornerRadius="25">
+                      <Viewbox Width="18" Height="19" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Canvas Width="28" Height="28">
-                          <Path Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" Fill="White" Height="28" Stretch="Fill" Width="28" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                          <Path Data="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z" 
+                                Fill="{StaticResource SecondaryBackground}" Height="28" Stretch="Fill" Width="28" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                         </Canvas>
                       </Viewbox>
                     </Border>
@@ -104,10 +105,11 @@
                       <RowDefinition Height="*"/>
                       <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="35" Height="35" VerticalAlignment="Center" Background="#F44336" CornerRadius="25" Opacity="0.2">
-                      <Viewbox Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="35" Height="35" VerticalAlignment="Center" Background="#F44336" CornerRadius="25" >
+                      <Viewbox Width="20" Height="21" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Canvas Width="28" Height="28">
-                          <Path Data="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" Fill="White" Height="28" Stretch="Fill" Width="28"/>
+                          <Path Data="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" 
+                                Fill="{StaticResource SecondaryBackground}" Height="28" Stretch="Fill" Width="28"/>
                         </Canvas>
                       </Viewbox>
                     </Border>
@@ -132,10 +134,11 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                   </Grid.RowDefinitions>
-                  <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="35" Height="35" VerticalAlignment="Center" Background="#FF9800" CornerRadius="30" Opacity="0.2">
+                  <Border Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Width="35" Height="35" VerticalAlignment="Center" Background="#FF9800" CornerRadius="30">
                     <Viewbox Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
                       <Canvas Width="35" Height="35">
-                        <Path Data="M7 2v11h3v9l7-12h-4l4-8z" Fill="White" HorizontalAlignment="Center" Canvas.Left="10" Height="35" Stretch="Fill" VerticalAlignment="Center" Width="15"/>
+                        <Path Data="M11,15H13V17H11V15M11,7H13V13H11V7M12,2C6.48,2 2,6.48 2,12C2,17.52 6.48,22 12,22C17.52,22 22,17.52 22,12C22,6.48 17.52,2 12,2Z" 
+                              Fill="{StaticResource SecondaryBackground}" Stretch="Uniform" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                       </Canvas>
                     </Viewbox>
                   </Border>
