@@ -128,6 +128,12 @@ namespace craftingTask
       this.boardsFrame.Navigate(remindersPage);
     }
 
+    private void btnOpenSearch_Click(object sender, RoutedEventArgs e)
+    {
+      var searchWindow = new SearchWindow();
+      searchWindow.ShowDialog();
+    }
+
     #endregion
 
     #region PopUpFunctions

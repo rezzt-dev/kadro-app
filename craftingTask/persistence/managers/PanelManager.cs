@@ -53,7 +53,7 @@ namespace craftingTask.persistence.managers
       }
     }
 
-    public void AddPanel (Panel inputPanel)
+    public void AddPanel(Panel inputPanel)
     {
       try
       {
@@ -141,6 +141,22 @@ namespace craftingTask.persistence.managers
       catch (Exception ex)
       {
         MessageBox.Show("Error al obtener paneles: " + ex.Message);
+        return new List<Panel>();
+      }
+    }
+
+    public List<Panel> GetAllPanels()
+    {
+      try
+      {
+        using (var broker = new DBBroker())
+        {
+          return broker.ExecuteQuery<Panel>("SELECT * FROM Panel ORDER BY BoardId, [Order]");
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Error al obtener todos los paneles: " + ex.Message);
         return new List<Panel>();
       }
     }
