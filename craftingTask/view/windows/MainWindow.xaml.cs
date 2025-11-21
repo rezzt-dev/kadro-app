@@ -114,6 +114,7 @@ namespace craftingTask
     {
       DeleteBoardsDialog deleteBoardsDialog = new DeleteBoardsDialog(BoardList);
       deleteBoardsDialog.ShowDialog();
+      this.boardsFrame.Content = null;
     }
 
     private void btnCalendarView_Click(object sender, RoutedEventArgs e)

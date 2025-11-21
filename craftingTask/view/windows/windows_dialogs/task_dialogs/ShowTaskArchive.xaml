@@ -19,8 +19,22 @@
           <ColumnDefinition Width="22"/>
           <ColumnDefinition Width="22"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="minimizeButton" Click="btnMinimizeWindowClick" Style="{StaticResource MinimizeWindowButton}" Grid.Column="1" Width="auto" Height="auto" Margin="4,6,6,4"/>
-        <Button x:Name="closeButton" Click="btnCloseWindowClick" Style="{StaticResource CloseWindowButton}" Grid.Column="2" Width="auto" Height="auto" Margin="4,6,6,4"/>
+        <Button x:Name="minimizeButton" Grid.Column="1" Width="12" Height="12" Margin="4,6,6,4" 
+                Click="btnMinimizeWindowClick" Style="{StaticResource MinimizeWindowButton}">
+          <Viewbox>
+            <Path Stroke="Black" StrokeThickness="2" VerticalAlignment="Center" Data="M2,7 L14,7" Width="16" Height="14"
+                  HorizontalAlignment="Center" Opacity="0.5"/>
+          </Viewbox>
+        </Button>
+        <Button x:Name="closeButton" Grid.Column="2" Width="12" Height="12" Margin="4,6,6,4" 
+                Click="btnCloseWindowClick" Style="{StaticResource CloseWindowButton}">
+          <Viewbox>
+            <Canvas Width="16" Height="14" Margin="2" Opacity="0.5">
+              <Path Stroke="Black" StrokeThickness="2" Data="M2,2 L14,12" />
+              <Path Stroke="Black" StrokeThickness="2" Data="M14,2 L2,12" />
+            </Canvas>
+          </Viewbox>
+        </Button>
       </Grid>
 
       <Grid x:Name="content" Grid.Row="1">
