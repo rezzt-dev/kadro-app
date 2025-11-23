@@ -89,3 +89,8 @@ D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Deb
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\ref\craftingTask.dll
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\frame_pages\SearchFilterPage.g.cs
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\frame_pages\SearchFilterPage.baml
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\AttachmentPreviewWindow.baml
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\AttachmentPreviewWindow.g.cs
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\bin\Debug\net8.0-windows\MimeMapping.dll
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\SearchResultsWindow.g.cs
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\SearchResultsWindow.baml

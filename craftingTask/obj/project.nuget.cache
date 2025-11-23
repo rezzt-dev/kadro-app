@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lr0AQ4AOXEY=",
+  "dgSpecHash": "dybj4yT4xOU=",
   "success": true,
   "projectFilePath": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\craftingTask.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\rezzt\\.nuget\\packages\\lightimage.dragdrop\\0.5.5\\lightimage.dragdrop.0.5.5.nupkg.sha512",
     "C:\\Users\\rezzt\\.nuget\\packages\\lightimage.dragdrop.wpf\\0.5.5\\lightimage.dragdrop.wpf.0.5.5.nupkg.sha512",
     "C:\\Users\\rezzt\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.10\\microsoft.data.sqlite.core.9.0.10.nupkg.sha512",
+    "C:\\Users\\rezzt\\.nuget\\packages\\mimemapping\\3.0.1\\mimemapping.3.0.1.nupkg.sha512",
     "C:\\Users\\rezzt\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
     "C:\\Users\\rezzt\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.1.11\\sqlitepclraw.bundle_green.2.1.11.nupkg.sha512",
     "C:\\Users\\rezzt\\.nuget\\packages\\sqlitepclraw.core\\2.1.11\\sqlitepclraw.core.2.1.11.nupkg.sha512",

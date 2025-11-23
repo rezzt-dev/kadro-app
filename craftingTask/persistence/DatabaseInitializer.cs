@@ -9,8 +9,12 @@ namespace craftingTask.persistence
     private const string DatabaseFileName = "CTDatabase.db";
     private const string SqlScriptPath = "resources/database/createDatabase.sql";
 
+    private static bool _initialized = false;
+
     public static void EnsureDatabaseExists()
     {
+      if (_initialized) return;
+
       try
       {
         bool dbFileExists = DatabaseFileExists();
@@ -27,11 +31,81 @@ namespace craftingTask.persistence
         else
         {
           EnsureSubtaskTableExists();
+          EnsureAttachmentTableSchema();
         }
+
+        _initialized = true;
       }
       catch (Exception ex)
       {
         throw new Exception($"Error al inicializar la base de datos: {ex.Message}", ex);
+      }
+    }
+
+    private static void EnsureAttachmentTableSchema()
+    {
+      try
+      {
+        using (var connection = new SqliteConnection($"Data Source={DatabaseFileName};"))
+        {
+          connection.Open();
+
+          // Check if Attachment table exists and get its definition
+          string sql = null;
+          using (var command = new SqliteCommand(
+            "SELECT sql FROM sqlite_master WHERE type='table' AND name='Attachment';",
+            connection))
+          {
+            var result = command.ExecuteScalar();
+            if (result != null && result != DBNull.Value)
+            {
+              sql = result.ToString();
+            }
+          }
+
+          bool needsRecreation = false;
+          if (sql == null)
+          {
+            // Table doesn't exist
+            needsRecreation = true;
+          }
+          else if (sql.Contains("REFERENCES Task(Id)", StringComparison.OrdinalIgnoreCase))
+          {
+            // Table exists but has wrong FK
+            needsRecreation = true;
+          }
+
+          if (needsRecreation)
+          {
+            // Drop if exists
+            using (var command = new SqliteCommand("DROP TABLE IF EXISTS Attachment;", connection))
+            {
+              command.ExecuteNonQuery();
+            }
+
+            // Create with correct schema
+            using (var command = new SqliteCommand(
+             @"CREATE TABLE IF NOT EXISTS Attachment (
+                  Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                  TaskId INTEGER NOT NULL,
+                  FileName TEXT NOT NULL,
+                  ContentType TEXT NOT NULL,
+                  FilePath TEXT,
+                  Data BLOB,
+                  CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+                  FOREIGN KEY (TaskId) REFERENCES Task(TaskId) ON DELETE CASCADE
+                );
+                CREATE INDEX IF NOT EXISTS IDX_Attachment_TaskId ON Attachment(TaskId);",
+             connection))
+            {
+              command.ExecuteNonQuery();
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        throw new Exception($"Error al verificar/crear tabla Attachment: {ex.Message}", ex);
       }
     }
 

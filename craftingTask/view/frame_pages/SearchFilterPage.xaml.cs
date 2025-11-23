@@ -17,6 +17,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Priority = craftingTask.model.Priority;
+
+using craftingTask.view.windows;
 
 namespace craftingTask.view.frame_pages
 {
@@ -145,14 +148,16 @@ namespace craftingTask.view.frame_pages
       // Perform search
       searchResults = searchService.Search(criteria);
 
-      // Actualizar ItemsSource en el hilo de UI para evitar errores visuales
-      Dispatcher.Invoke(() =>
+      // Show results in popup or show message
+      if (searchResults.Count > 0)
       {
-        lstResults.ItemsSource = null;  // Primero desasignar para limpiar posibles inconsistencias
-        lstResults.ItemsSource = searchResults;
-        lstResults.InvalidateVisual();  // Forzar invalidación visual
-        lstResults.UpdateLayout();      // Forzar actualización de layout
-      });
+        var resultsWindow = new SearchResultsWindow(searchResults);
+        resultsWindow.ShowDialog();
+      }
+      else
+      {
+        MessageBox.Show("No se encontraron tareas con los criterios seleccionados.", "Búsqueda", MessageBoxButton.OK, MessageBoxImage.Information);
+      }
     }
 
     private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -170,7 +175,8 @@ namespace craftingTask.view.frame_pages
       lstPanels.SelectedItems.Clear();
       lstBoards.SelectedItems.Clear();
       cmbSavedFilters.SelectedIndex = -1;
-      lstResults.ItemsSource = null;
+      cmbSavedFilters.SelectedIndex = -1;
+      searchResults.Clear();
       searchResults.Clear();
     }
 
@@ -304,13 +310,6 @@ namespace craftingTask.view.frame_pages
       // Auto-search on keyword change (optional)
     }
 
-    private void lstResults_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-    {
-      if (lstResults.SelectedItem is model.objects.Task selectedTask)
-      {
-        MessageBox.Show($"Tarea seleccionada: {selectedTask.Title}\nID: {selectedTask.TaskId}\nPanel ID: {selectedTask.PanelId}",
-                        "Información de Tarea", MessageBoxButton.OK, MessageBoxImage.Information);
-      }
-    }
+
   }
 }

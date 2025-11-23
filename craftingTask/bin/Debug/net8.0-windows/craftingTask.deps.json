@@ -11,6 +11,7 @@
           "LightImage.DragDrop": "0.5.5",
           "LightImage.DragDrop.Wpf": "0.5.5",
           "Microsoft.Data.Sqlite.Core": "9.0.10",
+          "MimeMapping": "3.0.1",
           "SQLite": "3.13.0",
           "SQLitePCLRaw.bundle_green": "2.1.11"
         },
@@ -54,6 +55,14 @@
           "lib/net8.0/Microsoft.Data.Sqlite.dll": {
             "assemblyVersion": "9.0.10.0",
             "fileVersion": "9.0.1025.47514"
+          }
+        }
+      },
+      "MimeMapping/3.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/MimeMapping.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.1.0"
           }
         }
       },
@@ -266,6 +275,13 @@
       "sha512": "sha512-tWbN2uzG4uBxxMjcHA3Oa9ecAYjyRTfDwRbgQ7ueyx7eEgyYbBiKADY2rllF8wO3dHUvN+/8fgylwSGMfiCtVg==",
       "path": "microsoft.data.sqlite.core/9.0.10",
       "hashPath": "microsoft.data.sqlite.core.9.0.10.nupkg.sha512"
+    },
+    "MimeMapping/3.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lhYcUVnWKaqrboAwi05YLCx3wdluM9Sr1Mv5Emhgc8c8yNVvdiSEnQJMdDvgb4grlYTaOmbnhYaezoeateX95w==",
+      "path": "mimemapping/3.0.1",
+      "hashPath": "mimemapping.3.0.1.nupkg.sha512"
     },
     "SQLite/3.13.0": {
       "type": "package",
