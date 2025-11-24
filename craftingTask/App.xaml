@@ -1496,7 +1496,7 @@
         </Style>
 
         <!--  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ estilos para la pagina de SearchWindows ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  -->
-        <!--  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ estilo moderno para ListBox ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  -->
+        <!-- estilo moderno para ListBox -->
         <Style x:Key="ModernDarkListBoxStyle" TargetType="ListBox">
             <Setter Property="Background" Value="{StaticResource SecondaryBackground}" />
             <Setter Property="Foreground" Value="{StaticResource MainForeground}" />
@@ -1711,5 +1711,49 @@
             </Setter>
         </Style>
 
-    </Application.Resources>
+    <!--  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ estilos para el context menu ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁  -->
+    <Style x:Key="ModernContextMenu" TargetType="{x:Type ContextMenu}">
+      <Setter Property="SnapsToDevicePixels" Value="True" />
+      <Setter Property="OverridesDefaultStyle" Value="True" />
+      <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+      <Setter Property="HasDropShadow" Value="True" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type ContextMenu}">
+            <Border x:Name="Border" Padding="4" Background="{StaticResource PopupBackground}" BorderBrush="{StaticResource PopupBorder}" 
+                    BorderThickness="2" CornerRadius="8">
+              <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+              <Border.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.4" ShadowDepth="4" Color="Black" />
+              </Border.Effect>
+            </Border>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    <Style x:Key="ModernMenuItem" TargetType="{x:Type MenuItem}">
+      <Setter Property="OverridesDefaultStyle" Value="True" />
+      <Setter Property="Header" Value="{Binding Path=Header, RelativeSource={RelativeSource Self}}" />
+      <Setter Property="Foreground" Value="{StaticResource MainForeground}" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type MenuItem}">
+            <Border x:Name="Border" Padding="10,5,10,5" Background="Transparent" CornerRadius="4">
+              <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center" ContentSource="Header" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsHighlighted" Value="True">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource SecondaryBackground}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+
+  </Application.Resources>
 </Application>

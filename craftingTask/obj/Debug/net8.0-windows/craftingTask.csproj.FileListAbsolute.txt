@@ -94,3 +94,5 @@ D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Deb
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\bin\Debug\net8.0-windows\MimeMapping.dll
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\SearchResultsWindow.g.cs
 D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\task_dialogs\SearchResultsWindow.baml
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\KadroBackupDialog.g.cs
+D:\repositorios\aplications-repositorios\crafting-tasks-app\craftingTask\obj\Debug\net8.0-windows\view\windows\windows_dialogs\KadroBackupDialog.baml

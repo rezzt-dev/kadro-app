@@ -54,14 +54,14 @@ namespace craftingTask
     private void BoardsFrame_Navigated(object sender, NavigationEventArgs e)
     {
       if (e.Content is CalendarPage)
-        btnCalendarView.IsEnabled = false;
+        menuItemCalendar.IsEnabled = false;
       else
-        btnCalendarView.IsEnabled = true;
+        menuItemCalendar.IsEnabled = true;
 
       if (e.Content is RemindersPage)
-        btnShowReminders.IsEnabled = false;
+        menuItemReminders.IsEnabled = false;
       else
-        btnShowReminders.IsEnabled = true;
+        menuItemReminders.IsEnabled = true;
     }
 
     private void btnMinimizeWindow(object sender, RoutedEventArgs e)
@@ -95,6 +95,32 @@ namespace craftingTask
     }
 
     #region ButtonFunctions 
+
+    private void btnBackup_Click(object sender, RoutedEventArgs e)
+    {
+      KadroBackupDialog backupDialog = new KadroBackupDialog();
+      backupDialog.ShowDialog();
+    }
+
+    private void btnMenu_Click(object sender, RoutedEventArgs e)
+    {
+      if (btnMenu.ContextMenu != null)
+      {
+        btnMenu.ContextMenu.PlacementTarget = btnMenu;
+        btnMenu.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        btnMenu.ContextMenu.IsOpen = true;
+      }
+    }
+
+    private void btnFunctions_Click(object sender, RoutedEventArgs e)
+    {
+      if (btnFunctions.ContextMenu != null)
+      {
+        btnFunctions.ContextMenu.PlacementTarget = btnFunctions;
+        btnFunctions.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+        btnFunctions.ContextMenu.IsOpen = true;
+      }
+    }
 
     private void btnCloseWindow(object sender, RoutedEventArgs e)
     {

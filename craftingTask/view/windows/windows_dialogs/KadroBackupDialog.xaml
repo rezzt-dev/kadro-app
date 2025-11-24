@@ -1,0 +1,20 @@
+<Window x:Class="craftingTask.view.windows.windows_dialogs.KadroBackupDialog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:craftingTask.view.windows.windows_dialogs" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="Backup y Restauración" Width="400" Height="250" AllowsTransparency="True" Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None" mc:Ignorable="d">
+  <Border Background="{StaticResource MainBackground}" BorderBrush="{StaticResource MainBorderColor}" BorderThickness="1" CornerRadius="12">
+    <Grid Margin="20">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <TextBlock Margin="0,0,0,20" HorizontalAlignment="Center" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource MainForeground}" Text="Backup y Restauración" />
+
+      <StackPanel Grid.Row="1" VerticalAlignment="Center">
+        <Button x:Name="btnCreateBackup" Height="40" Click="btnCreateBackup_Click" Content="Crear Backup" FontSize="14" Style="{StaticResource FunctionButtonStyle}" />
+        <Button x:Name="btnRestoreBackup" Height="40" Background="#FF453A" Click="btnRestoreBackup_Click" Content="Restaurar Backup" FontSize="14" Style="{StaticResource FunctionButtonStyle}" />
+      </StackPanel>
+
+      <Button x:Name="btnClose" Grid.Row="2" Margin="0,20,0,0" HorizontalAlignment="Center" Click="btnClose_Click" Content="Cerrar" Cursor="Hand" Foreground="{StaticResource SecondaryForeground}" Style="{StaticResource InvisibleButton}" />
+    </Grid>
+  </Border>
+</Window>
