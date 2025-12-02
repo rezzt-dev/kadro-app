@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|d:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingtask\\view\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:view\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|d:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingtask\\craftingtask.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{09ECE376-A387-4454-BFE0-5A879FB3096B}|craftingTask.csproj|solutionrelative:craftingtask.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,13 +23,13 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "view\\windows\\MainWindow.xaml",
-              "ToolTip": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\view\\windows\\MainWindow.xaml",
-              "RelativeToolTip": "view\\windows\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-24T21:00:05.858Z",
+              "Title": "craftingTask",
+              "DocumentMoniker": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\craftingTask.csproj",
+              "RelativeDocumentMoniker": "craftingTask.csproj",
+              "ToolTip": "D:\\repositorios\\aplications-repositorios\\crafting-tasks-app\\craftingTask\\craftingTask.csproj",
+              "RelativeToolTip": "craftingTask.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-02T00:07:18.893Z",
               "EditorCaption": ""
             }
           ]
