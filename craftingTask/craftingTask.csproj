@@ -6,7 +6,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>resources\images\icon\icono-kadro.ico</ApplicationIcon>
+    <ApplicationIcon>resources\images\icon\kadro-icon.ico</ApplicationIcon>
+    <AssemblyTitle>Kadro</AssemblyTitle>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,11 +30,12 @@
     <None Remove="resources\fonts\Poppins-Thin.ttf" />
     <None Remove="resources\fonts\Poppins-ThinItalic.ttf" />
     <None Remove="resources\images\icon\icono-kadro.ico" />
+    <None Remove="resources\images\icon\kadro-icon.ico" />
     <None Remove="resources\images\plus-add.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="resources\images\icon\icono-kadro.ico" />
+    <Content Include="resources\images\icon\kadro-icon.ico" />
     <Content Include="resources\database\createDatabase.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -70,6 +72,7 @@
     <Resource Include="resources\fonts\Poppins-Thin.ttf" />
     <Resource Include="resources\fonts\Poppins-ThinItalic.ttf" />
     <Resource Include="resources\images\icon\icono-kadro.ico" />
+    <Resource Include="resources\images\icon\kadro-icon.ico" />
     <Resource Include="resources\images\plus-add.ico" />
   </ItemGroup>
 

@@ -42,7 +42,6 @@ namespace craftingTask.persistence.managers
         {
           var parameters = new Dictionary<string, object>
             {
-                {"@TaskId", inputTask.TaskId },
                 {"@PanelId", inputTask.PanelId },
                 {"@Title", inputTask.Title },
                 {"@Description", inputTask.Description },
@@ -55,8 +54,8 @@ namespace craftingTask.persistence.managers
             };
 
           broker.ExecuteNonQuery(
-              "INSERT INTO Task (TaskId, PanelId, Title, Description, Tag, CreationDate, EndDate, Priority, StatusId, Color) " +
-              "VALUES (@TaskId, @PanelId, @Title, @Description, @Tag, @CreationDate, @EndDate, @Priority, @StatusId, @Color)",
+              "INSERT INTO Task (PanelId, Title, Description, Tag, CreationDate, EndDate, Priority, StatusId, Color) " +
+              "VALUES (@PanelId, @Title, @Description, @Tag, @CreationDate, @EndDate, @Priority, @StatusId, @Color)",
               parameters
           );
         }

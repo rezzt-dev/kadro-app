@@ -58,7 +58,11 @@
 
             <Grid Grid.Row="1">
               <ListBox x:Name="taskListBox" ItemsSource="{Binding ArchiveTaskList}" DisplayMemberPath="Title" SelectionMode="Multiple" Margin="10"
-                       Style="{StaticResource GenericDarkListBoxStyle}" ItemContainerStyle="{StaticResource DoneTaskDarkListBoxItemStyle}"/>
+                       Style="{StaticResource GenericDarkListBoxStyle}" ItemContainerStyle="{StaticResource DoneTaskDarkListBoxItemStyle}">
+                <ListBox.Resources>
+                  <Style BasedOn="{StaticResource DarkScrollBarStyle}" TargetType="ScrollBar" />
+                </ListBox.Resources>
+              </ListBox>
             </Grid>
           </Grid>
         </Border>
