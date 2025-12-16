@@ -134,8 +134,8 @@ namespace craftingTask.view.windows.windows_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/board_dialogs/createboarddia" +
-                    "log.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/windows/windows_dialogs/board_dialogs/createboarddialog.xam" +
+                    "l", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\view\windows\windows_dialogs\board_dialogs\CreateBoardDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

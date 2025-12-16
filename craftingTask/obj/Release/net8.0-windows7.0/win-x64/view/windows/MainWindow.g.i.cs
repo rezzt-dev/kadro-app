@@ -221,7 +221,7 @@ namespace craftingTask {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/windows/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\view\windows\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -189,8 +189,8 @@ namespace craftingTask.view.windows.windows_dialogs.task_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/task_dialogs/taskdetailsdial" +
-                    "og.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;V1.0.0.0;component/view/windows/windows_dialogs/task_dialogs/taskdetailsdi" +
+                    "alog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\view\windows\windows_dialogs\task_dialogs\TaskDetailsDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -174,7 +174,7 @@ namespace craftingTask.view.frame_pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/frame_pages/searchfilterpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/frame_pages/searchfilterpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\view\frame_pages\SearchFilterPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

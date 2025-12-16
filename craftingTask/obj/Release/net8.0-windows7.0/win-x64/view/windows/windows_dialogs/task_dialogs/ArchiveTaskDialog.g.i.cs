@@ -109,8 +109,8 @@ namespace craftingTask.view.windows.windows_dialogs.task_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/task_dialogs/archivetaskdial" +
-                    "og.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/windows/windows_dialogs/task_dialogs/archivetaskdialog.xaml" +
+                    "", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\..\view\windows\windows_dialogs\task_dialogs\ArchiveTaskDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -77,7 +77,7 @@ namespace craftingTask.view.windows.windows_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/kadrobackupdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/windows/windows_dialogs/kadrobackupdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\view\windows\windows_dialogs\KadroBackupDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

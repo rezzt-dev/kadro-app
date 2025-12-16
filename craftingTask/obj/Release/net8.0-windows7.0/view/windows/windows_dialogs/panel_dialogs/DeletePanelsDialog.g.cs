@@ -109,8 +109,8 @@ namespace craftingTask.view.windows.windows_dialogs.panel_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/panel_dialogs/deletepanelsdi" +
-                    "alog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/view/windows/windows_dialogs/panel_dialogs/deletepanelsdialog.xa" +
+                    "ml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\view\windows\windows_dialogs\panel_dialogs\DeletePanelsDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

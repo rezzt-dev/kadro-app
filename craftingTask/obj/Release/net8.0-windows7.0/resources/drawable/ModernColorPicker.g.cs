@@ -61,7 +61,7 @@ namespace craftingTask.resources.drawable {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/resources/drawable/moderncolorpicker.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;component/resources/drawable/moderncolorpicker.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\resources\drawable\ModernColorPicker.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

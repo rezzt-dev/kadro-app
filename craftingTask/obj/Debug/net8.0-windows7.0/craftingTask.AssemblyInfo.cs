@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("craftingTask")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Kadro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4fd67d21e4117356d486986db7d5f650d7f99d77")]
-[assembly: System.Reflection.AssemblyProductAttribute("craftingTask")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e82a7756cd6371107695cc26f08b68f5b05bd9f")]
+[assembly: System.Reflection.AssemblyProductAttribute("Kadro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Kadro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]

@@ -6,8 +6,10 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>resources\images\icon\kadro-icon.ico</ApplicationIcon>
+    <ApplicationIcon>resources\images\icon\icono-kadro.ico</ApplicationIcon>
     <AssemblyTitle>Kadro</AssemblyTitle>
+    <AssemblyName>Kadro</AssemblyName>
+    <RootNamespace>Kadro</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="resources\images\icon\kadro-icon.ico" />
+    <Content Include="resources\images\icon\icono-kadro.ico" />
     <Content Include="resources\database\createDatabase.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

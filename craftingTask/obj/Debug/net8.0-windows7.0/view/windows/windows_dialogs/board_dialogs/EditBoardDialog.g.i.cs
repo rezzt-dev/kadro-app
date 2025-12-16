@@ -134,8 +134,8 @@ namespace craftingTask.view.windows.windows_dialogs {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/craftingTask;component/view/windows/windows_dialogs/board_dialogs/editboarddialo" +
-                    "g.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Kadro;V1.0.0.0;component/view/windows/windows_dialogs/board_dialogs/editboarddia" +
+                    "log.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\..\view\windows\windows_dialogs\board_dialogs\EditBoardDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
