@@ -1,83 +1,78 @@
-# KADRO
-Gestor local de tableros y tareas con interfaz moderna desarrollada en WPF y C#.
+#  KADRO
+Local task and board manager with a modern interface, developed in WPF and C#.
 
 ---
-### DESCRIPCION GENERAL
-**Kadro** es una aplicación local diseñada para la gestión y administración de tableros y tareas.  
-Permite organizar el flujo de trabajo mediante paneles configurables al estilo Kanban, proporcionando una visualización clara y adaptable a las necesidades del usuario.
+###   GENERAL DESCRIPTION
+**Kadro** is a local desktop application designed for managing and organising boards and tasks. It enables users to structure their workflow through configurable Kanban-style panels, providing a clear and adaptable visual overview tailored to individual requirements.
 
-Las principales funcionalidades incluyen:
-- Creación de múltiples tableros con nombre y color personalizados.
-- Gestión de paneles dentro de cada tablero, incluyendo los predeterminados: Pendientes, En proceso y Realizadas.
-- Creación, edición y organización de tareas.
-- Almacenamiento local mediante SQLite para garantizar independencia de conexión y velocidad.
-- Interfaz moderna y minimalista desarrollada íntegramente con XAML.
-
----
-### TECNOLOGIAS UTILIZADAS
-| Categoría | Tecnologías |
-|----------|-------------|
-| Lenguajes | C# |
-| Framework principal | .NET WPF |
-| Framework alternativo / expansión futura | Avalonia |
-| Almacenamiento | SQLite |
-| Interfaz | XAML |
-| Control de versiones | Git |
+Key features include:
+- Creation of multiple boards with custom names and colours.
+- Panel management within each board, including the default ones: Pending, In Progress, and Completed.
+- Creation, editing, and organisation of tasks.
+- Local data storage using SQLite to ensure independence from network connectivity and provide high performance.
+- A modern and minimalist interface developed entirely with XAML.
 
 ---
-### ESTRUCTURA DEL SISTEMA Y MODELO DE DATOS
-Kadro utiliza una estructura clara y extensible basada en cuatro entidades principales: Board, Panel, Task y Status.
+###   TECHNOLOGIES USED
+| Categoría                                | Tecnologías |
+| ---------------------------------------- | ----------- |
+| Lenguajes                                | C#          |
+| Framework principal                      | .NET WPF    |
+| Framework alternativo / expansión futura | Avalonia    |
+| Almacenamiento                           | SQLite      |
+| Interfaz                                 | XAML        |
+| Control de versiones                     | Git         |
 
-#### 1. BOARD
-Representa un tablero contenedor de paneles.
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| board_id | int | Identificador del tablero |
-| name | string | Nombre asignado |
-| color | string | Color representativo |
-| creation_date | datetime | Fecha de creación |
-| modification_date | datetime | Fecha de modificación |
+---
+###   SYSTEM STRUCTURE AND DATA MODEL
+Kadro employs a clear and extensible structure based on four main entities: Board, Panel, Task, and Status.
 
-#### 2. PANEL
-Representa un panel dentro de un tablero.
-| Campo | Tipo |
-|-------|------|
-| panel_id | int |
-| board_id | int |
-| name | string |
-| color | string |
-| order | int (posicionamiento dentro del tablero) |
+####     1. BOARD
+Represents a board that contains panels.
+| Field             | Type     | Description            |
+| ----------------- | -------- | ---------------------- |
+| board_id          | int      | Board identifier       |
+| name              | string   | Assigned name          |
+| color             | string   | Representative colour  |
+| creation_date     | datetime | Creation date          |
+| modification_date | datetime | Last modification date |
+
+####     2. PANEL
+Represents a panel within a board.
+| Field         | Type                            |
+| ------------- | ------------------------------- |
+| panel_id      | int                             |
+| board_id      | int                             |
+| name          | string                          |
+| color         | string                          |
+| order         | int (position within the board) |
+| creation_date | datetime                        |
+
+####     3. TASK
+Represents a task within a panel.
+| Field         | Type     |
+| ------------- | -------- |
+| task_id       | int      |
+| panel_id      | int      |
+| title         | string   |
+| description   | string   |
+| tag           | string   |
 | creation_date | datetime |
+| end_date      | datetime |
+| priority      | int      |
+| status_id     | int      |
 
-#### 3. TASK
-Representa una tarea dentro de un panel.
-| Campo | Tipo |
-|-------|------|
-| task_id | int |
-| panel_id | int |
-| title | string |
-| description | string |
-| tag | string |
-| creation_date | datetime |
-| end_date | datetime |
-| priority | int |
-| status_id | int |
-
-
-#### 4. STATUS
-Define el estado de una tarea.
-
-| Campo | Tipo |
-|-------|------|
-| status_id | int |
-| name | string |
+####     4. STATUS
+Defines the state of a task.
+| Field     | Type   |
+| --------- | ------ |
+| status_id | int    |
+| name      | string |
 
 ---
-### INSTALACION Y EJECUCION
-#### 1. CLONACION DEL REPOSITORIO
+###   INSTALLATION AND EXECUTION
+####     1. CLONACION DEL REPOSITORIO
 ```sh
 git clone https://github.com/usuario/Kadro.git
 cd Kadro
 ```
-
----
