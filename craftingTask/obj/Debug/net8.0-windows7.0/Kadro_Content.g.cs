@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/icon/kadro-icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/images/icon/icono-kadro.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/database/createdatabase.sql")]
 
 

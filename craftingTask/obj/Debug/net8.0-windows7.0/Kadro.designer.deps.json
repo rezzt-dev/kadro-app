@@ -6,19 +6,6 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "craftingTask/1.0.0": {
-        "dependencies": {
-          "LightImage.DragDrop": "0.5.5",
-          "LightImage.DragDrop.Wpf": "0.5.5",
-          "Microsoft.Data.Sqlite.Core": "9.0.10",
-          "MimeMapping": "3.0.1",
-          "SQLite": "3.13.0",
-          "SQLitePCLRaw.bundle_green": "2.1.11"
-        },
-        "runtime": {
-          "craftingTask.dll": {}
-        }
-      },
       "gong-wpf-dragdrop/2.3.2": {
         "runtime": {
           "lib/netcoreapp3.1/GongSolutions.WPF.DragDrop.dll": {
@@ -243,11 +230,6 @@
     }
   },
   "libraries": {
-    "craftingTask/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "gong-wpf-dragdrop/2.3.2": {
       "type": "package",
       "serviceable": true,

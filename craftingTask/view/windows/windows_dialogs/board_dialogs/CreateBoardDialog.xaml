@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:craftingTask.view.windows.windows_dialogs"
         xmlns:local2="clr-namespace:craftingTask.resources.drawable"
         mc:Ignorable="d"
-        Title="CreateBoardDialog" Height="600" Width="600" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+        Title="CreateBoardDialog" Height="600" Width="600" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}"
+        ResizeMode="NoResize">
   <Border Background="{StaticResource MainBackground}" CornerRadius="12">
     <Grid>
       <Grid.RowDefinitions>
